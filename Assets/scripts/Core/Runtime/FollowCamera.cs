@@ -1,0 +1,16 @@
+﻿using UnityEngine;
+
+namespace Core
+{
+	public class FollowCamera : MonoBehaviour
+	{
+		public Vector2 Offset;
+		public Transform Following;
+
+		public void Update() 
+		{
+			transform.position = Following.transform.position - (Vector3)Offset;
+		}
+	}
+}
+

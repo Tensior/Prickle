@@ -1,0 +1,64 @@
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+namespace Core
+{
+	public class PathDefinitionTwo : MonoBehaviour
+	{
+		public Transform[] Points;
+		public GameObject GObject;
+
+		public IEnumerator<Transform> GetPathEnumerator()
+		{
+			if (Points == null || Points.Length < 1)
+				yield break;
+
+			var direction = 1;
+			var index = 0;
+			var count = 0;
+
+			while (true)
+			{
+				yield return Points[index];
+				GObject.SetActive(true);
+				if (Points.Length == 1)
+					continue;
+
+				if (index <= 0)
+					direction = 1;
+				else if (index >= Points.Length - 1)
+					direction = -1;
+
+				index = index + direction;
+				count++;
+
+				if (count >= 3)
+				{
+					GObject.SetActive(false);
+					if(count == 4)
+						count = 0;
+				}
+
+			}
+
+
+		}
+
+		public void OnDrawGizmos()
+		{
+			if (Points == null || Points.Length < 2)
+				return;
+
+			//new
+			var points = Points.Where(t => t != null).ToList();
+			if (points.Count < 2)
+				return;
+
+			for (var i = 1; i < Points.Length; i++)
+			{
+				Gizmos.DrawLine(Points[i - 1].position, Points[i].position);
+			}
+		}
+	}
+}

@@ -1,4 +1,5 @@
-﻿using Zenject;
+﻿using Core;
+using Zenject;
 
 namespace Installers
 {
@@ -6,7 +7,7 @@ namespace Installers
     {
         public override void InstallBindings()
         {
-            
+            Container.Bind<Player>().FromComponentInHierarchy().AsSingle().NonLazy();
         }
     }
 }
