@@ -1,18 +1,14 @@
 ﻿using UnityEngine;
 
-namespace Core
+namespace Core.PlayerInteractables
 {
-	public class GiveHealth : MonoBehaviour, IPlayerRespawnListner
+	public class GiveHealth : Pickup, IPlayerRespawnListner
 	{
 		public GameObject Effect;
 		public int HealthToGive;
 
-		public void OnTriggerEnter2D(Collider2D other)
+		public override void OnInteract(Player player)
 		{
-			var player = other.GetComponent<Player>();
-			if (player == null)
-				return;
-
 			player.GiveHealth(HealthToGive, gameObject);
 			Instantiate(Effect, transform.position, transform.rotation);
 

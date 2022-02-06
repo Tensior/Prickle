@@ -1,13 +1,21 @@
 ﻿using UnityEngine;
+using Zenject;
 
 namespace Core
 {
 	public class HealthBar : MonoBehaviour
 	{
-		public Player player;
+		private Player _player;
+		
 		public GameObject heartOne,
 			heartTwo,
 			heartThree;
+		
+		[Inject]
+		public void Initialize(Player player)
+		{
+			_player = player;
+		}
 
 		private void HealthCount(bool wordOne, bool wordTwo, bool wordThree)
 		{ 
@@ -23,7 +31,7 @@ namespace Core
 
 		public void Update()
 		{
-			var heartNum = player.Health;
+			var heartNum = _player.Health;
 
 			switch (heartNum)
 			{
