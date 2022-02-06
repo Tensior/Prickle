@@ -1,26 +1,18 @@
-﻿using UnityEngine;
+﻿using Core.PlayerInteractables;
+using UnityEngine;
 
 namespace Core
 {
-	public class InstaKill : MonoBehaviour
+	public class InstaKill : Pickup
 	{
 		public AudioClip KillSound;
-		public Animator Animator;
 
-		public void OnTriggerEnter2D(Collider2D other)
+		public override void OnInteract(Player _)
 		{
-			var player = other.GetComponent<Player>();
-			if (player == null)
-				return;
-
 			if (KillSound != null)
 				AudioSource.PlayClipAtPoint(KillSound, transform.position);
 
-			if (Animator != null)
-				Animator.SetTrigger("Damage");
-
 			LevelManager.Instance.KillPlayer();
-
 		}
 	}
 }

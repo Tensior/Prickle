@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Zenject;
 
 namespace Core
 {
@@ -19,10 +20,15 @@ namespace Core
 
 		private Player _player;
 		private BoxCollider2D _boxCollider;
+		
+		[Inject]
+		public void Initialize(Player player)
+		{
+			_player = player;
+		}
 
 		public void Start()
 		{
-			_player = GetComponent<Player>();
 			_boxCollider = GetComponent<BoxCollider2D>();
 		}
 

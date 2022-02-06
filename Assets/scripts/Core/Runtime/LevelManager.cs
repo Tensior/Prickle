@@ -3,14 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace Core
 {
 	public class LevelManager : MonoBehaviour
 	{
+		private Player _player;
+		
 		public static LevelManager Instance { get; private set; }
 
-		public Player Player { get; private set; }
 		public CameraController Camera { get; private set; }
 		//
 		public TimeSpan RunningTime { get { return DateTime.UtcNow - _started;}}
@@ -34,6 +36,12 @@ namespace Core
 		public int BonusCutoffSeconds;
 		public int BonusSecondMultiplier; //
 
+		[Inject]
+		public void Initialize(Player player)
+		{
+			_player = player;
+		}
+
 		public void Awake()
 		{
 			Instance = this;
@@ -44,7 +52,6 @@ namespace Core
 			_checkpoints = FindObjectsOfType<Checkpoint>().OrderBy(t => t.transform.position.x).ToList();
 			_currentCheckpointIndex = _checkpoints.Count > 0 ? 0 : -1;
 
-			Player = FindObjectOfType<Player>();
 			Camera = FindObjectOfType<CameraController>();
 			//
 			_started = DateTime.UtcNow;
@@ -65,9 +72,9 @@ namespace Core
 
 #if UNITY_EDITOR
 			if (DebugSpawn != null)
-				DebugSpawn.SpawnPlayer(Player);
+				DebugSpawn.SpawnPlayer(_player);
 			else if (_currentCheckpointIndex != -1)
-				_checkpoints[_currentCheckpointIndex].SpawnPlayer(Player);
+				_checkpoints[_currentCheckpointIndex].SpawnPlayer(_player);
 #else
 		if(_currentCheckpointIndex != -1)
 			_checkpoints[_currentCheckpointIndex].SpawnPlayer(Player);
@@ -81,13 +88,13 @@ namespace Core
 			if (isAtLastCheckpoint)
 				return;
 
-			var distanceToNextCheckpoint = _checkpoints[_currentCheckpointIndex + 1].transform.position.x - Player.transform.position.x;
+			var distanceToNextCheckpoint = _checkpoints[_currentCheckpointIndex + 1].transform.position.x - _player.transform.position.x;
 			if (distanceToNextCheckpoint >= 0)
 				return;
 
 			_checkpoints[_currentCheckpointIndex].PlayerLeftCheckpoint();
 			_currentCheckpointIndex++;
-			_checkpoints[_currentCheckpointIndex].RespawnEnemyData(Player);
+			_checkpoints[_currentCheckpointIndex].RespawnEnemyData(_player);
 			_checkpoints[_currentCheckpointIndex].PlayerHitCheckpoint();
 			//
 			GameManager.Instance.AddPoints(CurrentTimeBonus);
@@ -103,14 +110,14 @@ namespace Core
 
 		private IEnumerator KillPlayerCo()
 		{
-			Player.Kill();
+			_player.Kill();
 			Camera.IsFollowing = false;
 			yield return new WaitForSeconds(2f);
 
 			Camera.IsFollowing = true;
 
 			if (_currentCheckpointIndex != -1)
-				_checkpoints[_currentCheckpointIndex].SpawnPlayer(Player);
+				_checkpoints[_currentCheckpointIndex].SpawnPlayer(_player);
 
 			//
 			_started = DateTime.UtcNow;

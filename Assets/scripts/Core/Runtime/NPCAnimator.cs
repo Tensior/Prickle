@@ -1,16 +1,23 @@
 ﻿using System.Collections;
 using UnityEngine;
+using Zenject;
 
 namespace Core
 {
 	public class NPCAnimator : MonoBehaviour {
 
 		public Animator Animator;
-		public Player _player;
 		private BoxCollider2D _boxColliderSpirit;
 		private GameObject _canvas;
-
 		public AudioSource QuestMusic;
+		
+		private Player _player;
+
+		[Inject]
+		public void Initialize(Player player)
+		{
+			_player = player;
+		}
 
 		void Start()
 		{

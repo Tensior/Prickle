@@ -2,7 +2,7 @@
 
 namespace Core.PlayerInteractables
 {
-    public abstract class Pickup : MonoBehaviour, IPlayerInteractable
+    public abstract class Pickup : MonoBehaviour, IInteractable<Player>
     {
         public void OnTriggerEnter2D(Collider2D other)
         {

@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Core.PlayerInteractables;
+using UnityEngine;
 
 namespace Core
 {
-	public class GiveDamageToPlayer : MonoBehaviour
+	public class GiveDamageToPlayer : Pickup
 	{
 		public int DamageToGive = 10;
 
@@ -17,21 +18,18 @@ namespace Core
 			_lastPosition = transform.position;
 		}
 
-		public void OnTriggerEnter2D(Collider2D other)
+		public override void OnInteract(Player player)
 		{
-			var player = other.GetComponent<Player>();
-			if (player == null)
-				return;
-
 			player.TakeDamage(DamageToGive, gameObject);
+			
+			// TODO: пересмотреть логику отталкивания игрока
 			var controller = player.GetComponent<CharacterController2D>();
 			var totalVelocity = controller.Velocity + _velocity;
 
 			controller.SetForce(new Vector2(
 				-1 * Mathf.Sign(totalVelocity.x) * Mathf.Clamp(Mathf.Abs(totalVelocity.x) * 5, 10, 20),
 				-1 * Mathf.Sign(totalVelocity.y) * Mathf.Clamp(Mathf.Abs(totalVelocity.y) * 2, 0, 15)));
-
 		}
 	}
-}﻿
+}
 

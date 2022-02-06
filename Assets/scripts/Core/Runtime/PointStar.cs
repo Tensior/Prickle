@@ -1,19 +1,16 @@
-﻿using UnityEngine;
+﻿using Core.PlayerInteractables;
+using UnityEngine;
 
 namespace Core
 {
-	public class PointStar : MonoBehaviour, IPlayerRespawnListner
+	public class PointStar : Pickup, IPlayerRespawnListner
 	{
 		public GameObject Effect;
 		public int PointsToAdd = 1;
 		public AudioClip GetStarSound;
 
-
-		public void OnTriggerEnter2D(Collider2D other)
+		public override void OnInteract(Player player)
 		{
-			if (other.GetComponent<Player>() == null)
-				return;
-
 			if (GetStarSound != null)
 				AudioSource.PlayClipAtPoint(GetStarSound, transform.position);
 
