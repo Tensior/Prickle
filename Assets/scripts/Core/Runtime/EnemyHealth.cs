@@ -2,7 +2,7 @@
 
 namespace Core
 {
-	public class EnemyHealth : MonoBehaviour, ITakeDamage, IPlayerRespawnListner
+	public class EnemyHealth : MonoBehaviour, ITakeDamage, IPlayerSpawnListener
 	{
 		public int EHealth { get; private set; }
 		public int MaxEHealth = 120;
@@ -21,7 +21,7 @@ namespace Core
 		}
 
 
-		public void OnPlayerRespawnListnerInThisCheckpoint(Checkpoint checkpoint, Player player)
+		public void OnPlayerSpawn()
 		{
 			//Debug.Log("It's respawn time!");
 			EHealth = MaxEHealth;

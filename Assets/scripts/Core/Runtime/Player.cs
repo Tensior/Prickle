@@ -68,7 +68,7 @@ namespace Core
 			_controller.SetForce(new Vector2(0, 10));
 		}
 
-		public void RespawnAt(Transform spwanPoint)
+		public void SpawnAt(Transform point)
 		{
 			if (!_isFacingRight)
 				Flip();
@@ -78,7 +78,7 @@ namespace Core
 			_controller.HandleCollisions = true;
 			Health = MaxHealth;
 
-			transform.position = spwanPoint.position;
+			transform.position = point.position;
 		}
 
 		public void TakeDamage(int damage, GameObject instigator)

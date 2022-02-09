@@ -1,4 +1,4 @@
-﻿using Core.PlayerInteractables;
+﻿using Core.Interactables;
 using UnityEngine;
 
 namespace Core

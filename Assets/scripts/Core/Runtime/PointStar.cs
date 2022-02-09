@@ -1,9 +1,9 @@
-﻿using Core.PlayerInteractables;
+﻿using Core.Interactables;
 using UnityEngine;
 
 namespace Core
 {
-	public class PointStar : Pickup, IPlayerRespawnListner
+	public class PointStar : Pickup, IPlayerSpawnListener
 	{
 		public GameObject Effect;
 		public int PointsToAdd = 1;
@@ -20,7 +20,7 @@ namespace Core
 			gameObject.SetActive(false);
 		}
 
-		public void OnPlayerRespawnListnerInThisCheckpoint(Checkpoint checkpoint, Player player)
+		public void OnPlayerSpawn()
 		{
 			gameObject.SetActive(true);
 		}

@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Core.Interfaces;
+using UnityEngine;
 
-namespace Core.PlayerInteractables
+namespace Core.Interactables
 {
     public abstract class Pickup : MonoBehaviour, IInteractable<Player>
     {

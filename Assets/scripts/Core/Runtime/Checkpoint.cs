@@ -6,11 +6,8 @@ namespace Core
 {
 	public class Checkpoint : MonoBehaviour
 	{
-		private List<IPlayerRespawnListner> _listeners;
-
 		public void Awake()
 		{
-			_listeners = new List<IPlayerRespawnListner>();
 		}
 
 
@@ -29,23 +26,10 @@ namespace Core
 		
 		}
 
-		public void SpawnPlayer(Player player)
-		{
-			player.RespawnAt(transform);
-
-			foreach (var listener in _listeners)
-				listener.OnPlayerRespawnListnerInThisCheckpoint(this, player);
-		}
-
 		public void RespawnEnemyData(Player player)
 		{
-			foreach (var listener in _listeners)
-				listener.OnPlayerRespawnListnerInThisCheckpoint(this, player);
-		}
-
-		public void AssignObjectToCheckpoint(IPlayerRespawnListner listener)
-		{
-			_listeners.Add(listener);
+			/*foreach (var listener in _listeners)
+				listener.OnPlayerSpawn();*/
 		}
 	}
 }

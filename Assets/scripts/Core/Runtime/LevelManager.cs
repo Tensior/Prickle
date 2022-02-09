@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Interfaces;
 using UnityEngine;
 using Zenject;
 
@@ -35,11 +36,13 @@ namespace Core
 		//
 		public int BonusCutoffSeconds;
 		public int BonusSecondMultiplier; //
+		private IPlayerSpawner _playerSpawner;
 
 		[Inject]
-		public void Initialize(Player player)
+		public void Initialize(Player player, IPlayerSpawner playerSpawner)
 		{
 			_player = player;
+			_playerSpawner = playerSpawner;
 		}
 
 		public void Awake()
@@ -56,34 +59,28 @@ namespace Core
 			//
 			_started = DateTime.UtcNow;
 
-			var listeners = FindObjectsOfType<MonoBehaviour>().OfType<IPlayerRespawnListner>();
+			var listeners = FindObjectsOfType<MonoBehaviour>().OfType<IPlayerSpawnListener>();
 			foreach (var listener in listeners)
 			{
-				for (var i = _checkpoints.Count - 1; i >= 0; i--)
-				{
-					var distance = ((MonoBehaviour)listener).transform.position.x - _checkpoints[i].transform.position.x;
-					if (distance< 0)
-						continue;
-				
-					_checkpoints[i].AssignObjectToCheckpoint(listener);
-					break;
-				}
+				_playerSpawner.AddSpawnListener(listener);
 			}
 
 #if UNITY_EDITOR
 			if (DebugSpawn != null)
-				DebugSpawn.SpawnPlayer(_player);
-			else if (_currentCheckpointIndex != -1)
-				_checkpoints[_currentCheckpointIndex].SpawnPlayer(_player);
+			{
+				_playerSpawner.Spawn(DebugSpawn.transform);
+			}
+			else
+			{
+				SpawnPlayerOnCurrentCheckpoint();
+			}
 #else
-		if(_currentCheckpointIndex != -1)
-			_checkpoints[_currentCheckpointIndex].SpawnPlayer(Player);
+			SpawnPlayerOnCurrentCheckpoint();
 #endif
 		}
 
 		public void Update()
 		{
-		
 			var isAtLastCheckpoint = _currentCheckpointIndex + 1 >= _checkpoints.Count;
 			if (isAtLastCheckpoint)
 				return;
@@ -116,13 +113,19 @@ namespace Core
 
 			Camera.IsFollowing = true;
 
-			if (_currentCheckpointIndex != -1)
-				_checkpoints[_currentCheckpointIndex].SpawnPlayer(_player);
+			SpawnPlayerOnCurrentCheckpoint();
 
 			//
 			_started = DateTime.UtcNow;
 			GameManager.Instance.ResetPoints(_savedPoints);
 		}
 
+		private void SpawnPlayerOnCurrentCheckpoint()
+		{
+			if (_currentCheckpointIndex != -1)
+			{
+				_playerSpawner.Spawn(_checkpoints[_currentCheckpointIndex].transform);
+			}
+		}
 	}
 }

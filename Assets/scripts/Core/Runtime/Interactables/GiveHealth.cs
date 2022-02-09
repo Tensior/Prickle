@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Core.PlayerInteractables
+namespace Core.Interactables
 {
-	public class GiveHealth : Pickup, IPlayerRespawnListner
+	public class GiveHealth : Pickup, IPlayerSpawnListener
 	{
 		public GameObject Effect;
 		public int HealthToGive;
@@ -15,7 +15,7 @@ namespace Core.PlayerInteractables
 			gameObject.SetActive(false);
 		}
 
-		public void OnPlayerRespawnListnerInThisCheckpoint(Checkpoint checkpoint, Player player)
+		public void OnPlayerSpawn()
 		{
 			gameObject.SetActive(true);
 		}

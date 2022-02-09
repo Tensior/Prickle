@@ -2,7 +2,7 @@
 
 namespace Core
 {
-	public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerRespawnListner
+	public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerSpawnListener
 	{
 		public float Speed;
 		public float FireRate = 1;
@@ -67,7 +67,7 @@ namespace Core
 	
 		}
 
-		public void OnPlayerRespawnListnerInThisCheckpoint(Checkpoint checkpoint, Player player) 
+		public void OnPlayerSpawn() 
 		{
 			_direction = new Vector2(-1, 0);
 			transform.position = _startPosition;
