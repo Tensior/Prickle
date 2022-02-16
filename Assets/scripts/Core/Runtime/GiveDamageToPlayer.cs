@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Core
 {
-	public class GiveDamageToPlayer : Pickup
+	public class GiveDamageToPlayer : DamageDealer
 	{
-		public int DamageToGive = 10;
+		/*public int DamageToGive = 10;
 
 		private Vector2
 			_lastPosition,
@@ -13,12 +13,11 @@ namespace Core
 
 		public void LateUpdate()
 		{
-
 			_velocity = (_lastPosition - (Vector2)transform.position) / Time.deltaTime;
 			_lastPosition = transform.position;
 		}
 
-		public override void OnInteract(Player player)
+		public override void OnDamageDealt(Player player)
 		{
 			player.TakeDamage(DamageToGive, gameObject);
 			
@@ -29,7 +28,7 @@ namespace Core
 			controller.SetForce(new Vector2(
 				-1 * Mathf.Sign(totalVelocity.x) * Mathf.Clamp(Mathf.Abs(totalVelocity.x) * 5, 10, 20),
 				-1 * Mathf.Sign(totalVelocity.y) * Mathf.Clamp(Mathf.Abs(totalVelocity.y) * 2, 0, 15)));
-		}
+		}*/
 	}
 }
 

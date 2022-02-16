@@ -107,7 +107,7 @@ namespace Core
 
 		private IEnumerator KillPlayerCo()
 		{
-			_player.Kill();
+			_playerSpawner.Despawn();
 			Camera.IsFollowing = false;
 			yield return new WaitForSeconds(2f);
 

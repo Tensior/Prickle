@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core
 {
-	public class PointStar : Pickup, IPlayerSpawnListener
+	public class PointStar : Interactable<Player>, IPlayerSpawnListener
 	{
 		public GameObject Effect;
 		public int PointsToAdd = 1;

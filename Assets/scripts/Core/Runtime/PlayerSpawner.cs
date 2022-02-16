@@ -24,7 +24,7 @@ namespace Core
 
         void IPlayerSpawner.Despawn()
         {
-            throw new System.NotImplementedException();
+            _player.OnDied();
         }
 
         void IPlayerSpawner.AddSpawnListener(IPlayerSpawnListener listener)

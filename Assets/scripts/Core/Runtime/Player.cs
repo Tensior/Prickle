@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Core.Characters;
+using UnityEngine;
 
 namespace Core
 {
-	public class Player : MonoBehaviour, ITakeDamage {
+	public class Player : Character {
 		private bool _isFacingRight;
 		private CharacterController2D _controller; //for manipulation with charactercontroller2d
 		private float _normalizedHorizontalSpeed; // -1 or 1 depending to the player's moving to the left\right or Idle
@@ -57,7 +58,7 @@ namespace Core
 			IsFreeze = freeze;
 		}
 
-		public void Kill()
+		public void OnDied()
 		{
 			_controller.HandleCollisions = false;
 			GetComponent<Collider2D>().enabled = false;
@@ -79,26 +80,6 @@ namespace Core
 			Health = MaxHealth;
 
 			transform.position = point.position;
-		}
-
-		public void TakeDamage(int damage, GameObject instigator)
-		{
-			Instantiate(OuchEffect, transform.position, transform.rotation);
-			Health -= damage;
-
-			if(Health >= 40)
-				AudioSource.PlayClipAtPoint(PlayerHitSound, transform.position);
-
-			if (Health <= 0)
-				LevelManager.Instance.KillPlayer();
-
-			Animator.SetTrigger("Damage");
-		}
-
-		public void GiveHealth(int health, GameObject instigator) 
-		{
-			AudioSource.PlayClipAtPoint(PlayerHealthSound, transform.position);
-			Health = Mathf.Min(Health + health, MaxHealth);
 		}
 
 		private void HandleInput() {
@@ -150,5 +131,31 @@ namespace Core
 			_isFacingRight = !_isFacingRight; //transform.localScale.x > 0; 3buzz ver
 		}
 
+		protected override void OnHealthModified(int amount)
+		{
+			switch (amount)
+			{
+				case > 0:
+					AudioSource.PlayClipAtPoint(PlayerHealthSound, transform.position);
+					break;
+				case < 0:
+				{
+					Instantiate(OuchEffect, transform.position, transform.rotation);
+
+					if (Health >= 40)
+					{
+						AudioSource.PlayClipAtPoint(PlayerHitSound, transform.position);
+					}
+
+					Animator.SetTrigger("Damage");
+					break;
+				}
+			}
+		}
+
+		protected override void OnKilled()
+		{
+			LevelManager.Instance.KillPlayer();
+		}
 	}
 }
