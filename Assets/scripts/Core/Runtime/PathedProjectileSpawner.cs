@@ -4,7 +4,7 @@ namespace Core
 {
 	public class PathedProjectileSpawner : MonoBehaviour
 	{
-		public Transform Destination;
+		[SerializeField] private float _maxDistance;
 		public PathedProjectile Projectile;
 
 		public GameObject SpawnEffect;
@@ -15,6 +15,7 @@ namespace Core
 		public Animator Animator;
 
 		private float _nextShotInSeconds;
+		private Vector2 _shootTarget;
 
 		public void Start()
 		{
@@ -24,12 +25,13 @@ namespace Core
 
 		public void Update()
 		{
+			_shootTarget = transform.position + transform.forward * _maxDistance;
 			if ((_nextShotInSeconds -= Time.deltaTime) > 0)
 				return;
 
 			_nextShotInSeconds = FireRate;
-			var projectile = (PathedProjectile)Instantiate(Projectile, transform.position, transform.rotation);
-			projectile.Initalize(Destination, Speed);
+			var projectile = Instantiate(Projectile, transform.position, transform.rotation);
+			projectile.Initialize(_shootTarget, Speed);
 
 			if (SpawnEffect != null)
 				Instantiate(SpawnEffect, transform.position, transform.rotation);
@@ -43,11 +45,8 @@ namespace Core
 
 		public void OnDrawGizmos()
 		{
-			if (Destination == null)
-				return;
-
 			Gizmos.color = Color.red;
-			Gizmos.DrawLine(transform.position, Destination.position);
+			Gizmos.DrawLine(transform.position, _shootTarget);
 		}
 	}
 }

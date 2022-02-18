@@ -7,7 +7,6 @@ namespace Core.Characters
     {
         [SerializeField] private EntityType _type;
         [SerializeField] private int _maxHealth;
-
         private int _currentHealth;
 
         public EntityType Type => _type;

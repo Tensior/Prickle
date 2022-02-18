@@ -1,4 +1,5 @@
 ﻿using Core.Characters;
+using Core.Interfaces;
 using UnityEngine;
 
 namespace Core
@@ -12,9 +13,8 @@ namespace Core
 		public float SpeedAccelerationOnGround = 10f; //how quickly -player goes from moving left to the right/speed can change
 		public float SpeedAccelerationInAir = 5f;
 
-		public int MaxHealth = 120;
 		public GameObject OuchEffect;
-		public Projectile Projectile;
+		public PathedProjectile Projectile;
 		public float FireRate;
 		public Transform ProjectileFireLocation;
 
@@ -77,7 +77,7 @@ namespace Core
 			IsDead = false;
 			GetComponent<Collider2D>().enabled = true;
 			_controller.HandleCollisions = true;
-			Health = MaxHealth;
+			Health = ((IDamageable)this).MaxHealth;
 
 			transform.position = point.position;
 		}
@@ -118,8 +118,8 @@ namespace Core
 				return;
 
 			var direction = _isFacingRight ? Vector2.right : -Vector2.right;
-			var projectile = (Projectile)Instantiate(Projectile, ProjectileFireLocation.position, ProjectileFireLocation.rotation);
-			projectile.Initialize(gameObject, direction, _controller.Velocity);
+			var projectile = Instantiate(Projectile, ProjectileFireLocation.position, ProjectileFireLocation.rotation);
+			projectile.Initialize(direction, 10);
 
 			_canFireIn = FireRate;
 			AudioSource.PlayClipAtPoint(PlayerShootSound, transform.position);

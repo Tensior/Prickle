@@ -11,6 +11,7 @@ namespace Core.Interactables
 
             if (subject == null)
             {
+                OnInteractOther(other);
                 return;
             }
 
@@ -18,5 +19,7 @@ namespace Core.Interactables
         }
 
         public abstract void OnInteract(T subject);
+
+        protected virtual void OnInteractOther(Collider2D other) { }
     }
 }

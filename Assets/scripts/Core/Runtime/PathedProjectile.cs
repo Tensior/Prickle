@@ -1,38 +1,69 @@
-﻿using UnityEngine;
+﻿using Core.Interactables;
+using Core.Interfaces;
+using UnityEngine;
 
 namespace Core
 {
-	public class PathedProjectile : MonoBehaviour, ITakeDamage
+	public class PathedProjectile : DamageDealer
 	{
-		private Transform _destination;
+		[SerializeField] private GameObject _destroyEffect;
+		[SerializeField] private AudioClip _destroySound;
+		
 		private float _speed;
+		private Vector3 _destination;
 
-		public GameObject DestroyEffect;
-
-		public void Initalize(Transform destination, float speed)
+		public void Initialize(Vector2 destination, float speed)
 		{
-			_destination = destination;
 			_speed = speed;
+			_destination = destination;
 		}
 
 		public void Update()
 		{
-			transform.position = Vector3.MoveTowards(transform.position, _destination.position, Time.deltaTime * _speed);
-
-			var distanceSquared = (_destination.transform.position - transform.position).sqrMagnitude;
-			if (distanceSquared > .01f * .01f)
+			if (_speed == 0)
+			{
 				return;
+			}
 
-			if (DestroyEffect != null)
-				Instantiate(DestroyEffect, transform.position, transform.rotation);
+			var distPerFrame = Time.deltaTime * _speed;
+			
+			transform.position = Vector3.MoveTowards(transform.position, _destination, distPerFrame);
+
+			var distanceSquared = (_destination - transform.position).sqrMagnitude;
+			if (distanceSquared >= distPerFrame)
+			{
+				return;
+			}
+
+			OnStopped();
+		}
+
+		protected override void OnDamageDealt(IDamageable damageable)
+		{
+			base.OnDamageDealt(damageable);
+			OnStopped();
+		}
+
+		protected override void OnInteractOther(Collider2D other)
+		{
+			base.OnInteractOther(other);
+			OnStopped();
+		}
+
+		private void OnStopped()
+		{
+			if (_destroyEffect != null)
+			{
+				Instantiate(_destroyEffect, transform.position, transform.rotation);
+			}
+
+			if (_destroySound != null)
+			{
+				AudioSource.PlayClipAtPoint(_destroySound, transform.position);
+			}
 
 
 			Destroy(gameObject);
-		}
-
-		public void TakeDamage(int damage, GameObject instigator)
-		{ 
-	
 		}
 	}
 }

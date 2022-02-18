@@ -2,11 +2,11 @@
 
 namespace Core
 {
-	public class SimpleEnemyAI : MonoBehaviour, ITakeDamage, IPlayerSpawnListener
+	public class SimpleEnemyAI : MonoBehaviour, IPlayerSpawnListener
 	{
 		public float Speed;
 		public float FireRate = 1;
-		public Projectile Projectile;
+		public PathedProjectile Projectile;
 		public GameObject DestroyedEffect;
 		public AudioClip ShootSound;
 
@@ -48,23 +48,12 @@ namespace Core
 			if (!raycast)
 				return;
 
-			var projectile = (Projectile)Instantiate(Projectile, transform.position, transform.rotation);
-			projectile.Initialize(gameObject, _direction, _controller.Velocity);
+			var projectile = Instantiate(Projectile, transform.position, transform.rotation);
+			projectile.Initialize(_direction, 10);
 			_canFireIn = FireRate;
 
 			if (ShootSound != null)
 				AudioSource.PlayClipAtPoint(ShootSound, transform.position);
-		}
-
-		public void TakeDamage(int damage, GameObject instigator)
-		{
-			EHealth -= damage;
-			if (EHealth == 0)
-			{ 
-				Instantiate(DestroyedEffect, transform.position, transform.rotation);
-				gameObject.SetActive(false);
-			}
-	
 		}
 
 		public void OnPlayerSpawn() 
