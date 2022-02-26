@@ -5,15 +5,20 @@ namespace Core.Interactables
 {
     public class DamageDealer : Interactable<IDamageable>, ITypedAmount
     {
-        [SerializeField] private EntityType _type;
-        [SerializeField] private int _damage;
         [SerializeField] private bool _isImmediateKill;
 
         EntityType ITypedAmount.Type => _type;
-
         int ITypedAmount.Amount => -_damage;
-
         bool ITypedAmount.IsFullAmount => _isImmediateKill;
+
+        private EntityType _type;
+        private int _damage;
+
+        public void Init(EntityType type, int damage)
+        {
+            _type = type;
+            _damage = damage;
+        }
 
         public override void OnInteract(IDamageable damageable)
         {

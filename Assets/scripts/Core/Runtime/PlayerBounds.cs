@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Core.Interfaces;
+using UnityEngine;
 using Zenject;
 
 namespace Core
@@ -34,7 +35,7 @@ namespace Core
 
 		public void Update()
 		{
-			if (_player.IsDead)
+			if (((IDamageable)_player).IsDead)
 				return;
 
 			var colliderSize = new Vector2(_boxCollider.size.x * Mathf.Abs(transform.localScale.x), 

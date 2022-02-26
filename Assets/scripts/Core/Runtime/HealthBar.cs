@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Core.Interfaces;
+using UnityEngine;
 using Zenject;
 
 namespace Core
@@ -31,7 +32,7 @@ namespace Core
 
 		public void Update()
 		{
-			var heartNum = _player.Health;
+			var heartNum = ((IDamageable)_player).CurrentHealth;
 
 			switch (heartNum)
 			{

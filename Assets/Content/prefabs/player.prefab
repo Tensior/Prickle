@@ -99,6 +99,8 @@ GameObject:
   - component: {fileID: 61051453715252550}
   - component: {fileID: 95981090727597408}
   - component: {fileID: 114045626134664828}
+  - component: {fileID: 422070649646230653}
+  - component: {fileID: 1005706046674689390}
   m_Layer: 11
   m_Name: player
   m_TagString: Untagged
@@ -142,19 +144,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _maxHealth: 120
-  MaxSpeed: 5
-  SpeedAccelerationOnGround: 10
-  SpeedAccelerationInAir: 5
   OuchEffect: {fileID: 1319984020168462, guid: 94b7246759d17b44ba2894f229a2af8f, type: 3}
-  Projectile: {fileID: 114906503444369556, guid: e9aeafeaa4a38b248b4315cfa41cc27e,
-    type: 3}
-  FireRate: 0.5
-  ProjectileFireLocation: {fileID: 4259017240590044}
   PlayerHitSound: {fileID: 8300000, guid: 98593d74668c92241ab0d236d64964ad, type: 3}
-  PlayerShootSound: {fileID: 8300000, guid: f09a1abb55517fc469e56fc4d9e193df, type: 3}
   PlayerHealthSound: {fileID: 8300000, guid: 583269c908848934b964ad2685e41b78, type: 3}
-  DeathSound: {fileID: 8300000, guid: 893e71412160b3e4caea170d0103eb42, type: 3}
-  JumpSound: {fileID: 8300000, guid: d26db5cc8b3f1bf45932dc2359cc4e68, type: 3}
   Animator: {fileID: 95981090727597408}
 --- !u!114 &114817262453436732
 MonoBehaviour:
@@ -168,6 +160,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e868920edb8649747af186326c43208b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxSpeed: 8
+  SpeedAccelerationOnGround: 10
+  SpeedAccelerationInAir: 5
+  OuchEffect: {fileID: 0}
+  Projectile: {fileID: 0}
+  FireRate: 0
+  ProjectileFireLocation: {fileID: 0}
+  PlayerHitSound: {fileID: 0}
+  PlayerShootSound: {fileID: 0}
+  PlayerHealthSound: {fileID: 0}
+  DeathSound: {fileID: 0}
+  JumpSound: {fileID: 0}
+  Animator: {fileID: 0}
   PlatformMask:
     serializedVersion: 2
     m_Bits: 256
@@ -262,6 +267,35 @@ MonoBehaviour:
   Below: 2
   Left: 1
   Right: 1
+--- !u!114 &422070649646230653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063314127164966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3af8824560814a268f58c5209b253b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1005706046674689390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063314127164966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20aae68fdb0544f8956e42e6c836fcc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectile: {fileID: 0}
+  FireRate: 0
+  ProjectileFireLocation: {fileID: 0}
+  PlayerShootSound: {fileID: 0}
+  Animator: {fileID: 0}
 --- !u!1 &1317165800413316
 GameObject:
   m_ObjectHideFlags: 0

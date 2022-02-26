@@ -4,6 +4,21 @@ namespace Core
 {
 	public class CharacterController2D : MonoBehaviour
 	{
+		public float MaxSpeed = 8;
+		public float SpeedAccelerationOnGround = 10f; //how quickly -player goes from moving left to the right/speed can change
+		public float SpeedAccelerationInAir = 5f;
+
+		public GameObject OuchEffect;
+		public PathedProjectile Projectile;
+		public float FireRate;
+		public Transform ProjectileFireLocation;
+
+		public AudioClip PlayerHitSound;
+		public AudioClip PlayerShootSound;
+		public AudioClip PlayerHealthSound;
+		public AudioClip DeathSound;
+		public AudioClip JumpSound;
+		public Animator Animator;
 
 		private const float SkinWidth = .02f;
 		private const int TotalHorizontalRays = 8;
