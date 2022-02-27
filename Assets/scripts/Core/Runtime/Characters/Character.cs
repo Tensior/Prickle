@@ -3,18 +3,19 @@ using UnityEngine;
 
 namespace Core.Characters
 {
-    [RequireComponent(typeof(CharacterRuler))]
+    [RequireComponent(typeof(CharacterRuler), typeof(IMovementSystem), typeof(IFireSystem))]
     public abstract class Character : MonoBehaviour, ICharacter
     {
         protected bool IsFrozen;
         
         [SerializeField] private EntityType _type;
         [SerializeField] private int _maxHealth;
-        private int _currentHealth;
+        [SerializeField] private Animator _animator;
 
         private CharacterRuler _characterRuler;
         private IMovementSystem _movementSystem;
         private IFireSystem _fireSystem;
+        private int _currentHealth;
 
         public EntityType Type => _type;
         
@@ -37,7 +38,9 @@ namespace Core.Characters
             _fireSystem = GetComponent<IFireSystem>();
             
             _characterRuler.Init(this);
-            _fireSystem.Init(_type);
+            _fireSystem.Init(_type, _animator);
+
+            _currentHealth = _maxHealth;
         }
 
         void IDamageable.ModifyHealth(int amount)

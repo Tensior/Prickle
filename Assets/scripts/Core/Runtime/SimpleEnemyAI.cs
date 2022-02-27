@@ -6,7 +6,7 @@ namespace Core
 	{
 		public float Speed;
 		public float FireRate = 1;
-		public PathedProjectile Projectile;
+		public Projectile Projectile;
 		public GameObject DestroyedEffect;
 		public AudioClip ShootSound;
 
@@ -49,7 +49,7 @@ namespace Core
 				return;
 
 			var projectile = Instantiate(Projectile, transform.position, transform.rotation);
-			projectile.Initialize(_direction, 10);
+			projectile.Init(_direction, 10, EntityType.Enemy, 1);
 			_canFireIn = FireRate;
 
 			if (ShootSound != null)

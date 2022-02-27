@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core
 {
-	public class PathedProjectile : DamageDealer
+	public class Projectile : DamageDealer
 	{
 		[SerializeField] private GameObject _destroyEffect;
 		[SerializeField] private AudioClip _destroySound;
@@ -12,8 +12,10 @@ namespace Core
 		private float _speed;
 		private Vector3 _destination;
 
-		public void Initialize(Vector2 destination, float speed)
+		public void Init(Vector2 destination, float speed, EntityType type, int damage)
 		{
+			base.Init(type, damage);
+			
 			_speed = speed;
 			_destination = destination;
 		}
@@ -47,7 +49,12 @@ namespace Core
 		protected override void OnInteractOther(Collider2D other)
 		{
 			base.OnInteractOther(other);
-			OnStopped();
+
+			// TODO: remove it
+			if (other.gameObject.layer != 9)
+			{
+				OnStopped();
+			}
 		}
 
 		private void OnStopped()

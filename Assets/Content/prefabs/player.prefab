@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _maxHealth: 120
+  _animator: {fileID: 95981090727597408}
   OuchEffect: {fileID: 1319984020168462, guid: 94b7246759d17b44ba2894f229a2af8f, type: 3}
   PlayerHitSound: {fileID: 8300000, guid: 98593d74668c92241ab0d236d64964ad, type: 3}
   PlayerHealthSound: {fileID: 8300000, guid: 583269c908848934b964ad2685e41b78, type: 3}
@@ -291,11 +292,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20aae68fdb0544f8956e42e6c836fcc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 0}
-  FireRate: 0
-  ProjectileFireLocation: {fileID: 0}
-  PlayerShootSound: {fileID: 0}
-  Animator: {fileID: 0}
+  _projectile: {fileID: 114906503444369556, guid: e9aeafeaa4a38b248b4315cfa41cc27e,
+    type: 3}
+  _damage: 20
+  _fireRate: 2
+  _fireDistance: 20
+  _weaponPivot: {fileID: 4259017240590044}
+  _playerShootSound: {fileID: 8300000, guid: f09a1abb55517fc469e56fc4d9e193df, type: 3}
 --- !u!1 &1317165800413316
 GameObject:
   m_ObjectHideFlags: 0

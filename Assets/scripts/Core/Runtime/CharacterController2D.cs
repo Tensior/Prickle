@@ -9,7 +9,7 @@ namespace Core
 		public float SpeedAccelerationInAir = 5f;
 
 		public GameObject OuchEffect;
-		public PathedProjectile Projectile;
+		public Projectile Projectile;
 		public float FireRate;
 		public Transform ProjectileFireLocation;
 

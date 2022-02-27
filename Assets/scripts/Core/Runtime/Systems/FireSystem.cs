@@ -5,32 +5,45 @@ namespace Core.Systems
 {
     public class FireSystem : MonoBehaviour, IFireSystem
     {
-        [SerializeField] private PathedProjectile _projectile;
+        [SerializeField] private Projectile _projectile;
+        [SerializeField] private int _damage;
         [SerializeField] private int _fireRate;
+        [SerializeField] private int _fireDistance;
         [SerializeField] private Transform _weaponPivot;
         [SerializeField] private AudioClip _playerShootSound;
-        [SerializeField] private Animator _animator;
-        
-        private float _canFireIn;
-        private EntityType _type;
 
-        void IFireSystem.Init(EntityType type)
+        private EntityType _type;
+        private Animator _animator;
+        private float _timeBetweenFire;
+        private float _timeSinceLastFire;
+
+        void IFireSystem.Init(EntityType type, Animator animator)
         {
             _type = type;
+            _animator = animator;
+
+            _timeBetweenFire = 1 / (float)_fireRate;
         }
 
         void IFireSystem.Fire()
         {
-            if (_canFireIn > 0)
+            if (_timeSinceLastFire < _timeBetweenFire)
+            {
                 return;
+            }
 
-            var direction = /*_isFacingRight ? Vector2.right : -*/Vector2.right;
-            var projectile = Instantiate(_projectile, _weaponPivot.position, _weaponPivot.rotation);
-            projectile.Initialize(direction, 10);
+            var weaponPosition = _weaponPivot.position;
+            var projectile = Instantiate(_projectile, weaponPosition, _weaponPivot.rotation);
+            projectile.Init(weaponPosition + _weaponPivot.right * _fireDistance, 10, _type, _damage);
+            _timeSinceLastFire = 0;
 
-            _canFireIn = _fireRate;
             AudioSource.PlayClipAtPoint(_playerShootSound, transform.position);
             _animator.SetTrigger("Fire");
+        }
+
+        private void Update()
+        {
+            _timeSinceLastFire += Time.deltaTime;
         }
     }
 }

@@ -5,7 +5,7 @@ namespace Core
 	public class PathedProjectileSpawner : MonoBehaviour
 	{
 		[SerializeField] private float _maxDistance;
-		public PathedProjectile Projectile;
+		public Projectile Projectile;
 
 		public GameObject SpawnEffect;
 		public float Speed;
@@ -31,7 +31,7 @@ namespace Core
 
 			_nextShotInSeconds = FireRate;
 			var projectile = Instantiate(Projectile, transform.position, transform.rotation);
-			projectile.Initialize(_shootTarget, Speed);
+			projectile.Init(_shootTarget, Speed, EntityType.Enemy, 1);
 
 			if (SpawnEffect != null)
 				Instantiate(SpawnEffect, transform.position, transform.rotation);
