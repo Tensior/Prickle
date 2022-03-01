@@ -1,3 +1,4 @@
+using System;
 using Core.Interfaces;
 using UnityEngine;
 
@@ -17,10 +18,14 @@ namespace Core.Systems
         private float _timeBetweenFire;
         private float _timeSinceLastFire;
 
-        void IFireSystem.Init(EntityType type, Animator animator)
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>();
+        }
+
+        void IFireSystem.Init(EntityType type)
         {
             _type = type;
-            _animator = animator;
 
             _timeBetweenFire = 1 / (float)_fireRate;
         }
@@ -33,17 +38,30 @@ namespace Core.Systems
             }
 
             var weaponPosition = _weaponPivot.position;
+            
             var projectile = Instantiate(_projectile, weaponPosition, _weaponPivot.rotation);
-            projectile.Init(weaponPosition + _weaponPivot.right * _fireDistance, 10, _type, _damage);
+            projectile.Init(GetFireDestination(), 10, _type, _damage);
+            
             _timeSinceLastFire = 0;
 
-            AudioSource.PlayClipAtPoint(_playerShootSound, transform.position);
+            AudioSource.PlayClipAtPoint(_playerShootSound, weaponPosition);
             _animator.SetTrigger("Fire");
         }
 
         private void Update()
         {
             _timeSinceLastFire += Time.deltaTime;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(_weaponPivot.position, GetFireDestination());
+        }
+
+        private Vector2 GetFireDestination()
+        {
+            return _weaponPivot.position + _weaponPivot.right * _fireDistance;
         }
     }
 }

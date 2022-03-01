@@ -10,7 +10,7 @@ namespace Core.Characters
         
         [SerializeField] private EntityType _type;
         [SerializeField] private int _maxHealth;
-        [SerializeField] private Animator _animator;
+        [SerializeField] protected Animator _animator;
 
         private CharacterRuler _characterRuler;
         private IMovementSystem _movementSystem;
@@ -38,7 +38,7 @@ namespace Core.Characters
             _fireSystem = GetComponent<IFireSystem>();
             
             _characterRuler.Init(this);
-            _fireSystem.Init(_type, _animator);
+            _fireSystem.Init(_type);
 
             _currentHealth = _maxHealth;
         }

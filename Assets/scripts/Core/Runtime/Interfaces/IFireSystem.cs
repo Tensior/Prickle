@@ -1,10 +1,8 @@
-using UnityEngine;
-
 namespace Core.Interfaces
 {
     public interface IFireSystem
     {
-        void Init(EntityType type, Animator animator);
+        void Init(EntityType type);
         void Fire();
     }
 }

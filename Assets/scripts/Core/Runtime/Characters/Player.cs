@@ -9,23 +9,6 @@ namespace Core
 		public GameObject OuchEffect;
 		public AudioClip PlayerHitSound;
 		public AudioClip PlayerHealthSound;
-		public Animator Animator;
-
-		/*public void Update() {
-			_canFireIn -= Time.deltaTime;
-			if(!IsDead)
-				HandleInput(); //change horizontal speed to -1/0/1 depending on keys
-
-			var movementFactor = _controller.State.IsGrounded ? SpeedAccelerationOnGround : SpeedAccelerationInAir;
-
-			if (IsDead || IsFreeze)
-				_controller.SetHorizontalForce(0);
-			else
-				_controller.SetHorizontalForce(Mathf.Lerp(_controller.Velocity.x, _normalizedHorizontalSpeed * MaxSpeed, Time.deltaTime * movementFactor));
-
-			Animator.SetBool("IsGrounded", _controller.State.IsGrounded);
-			Animator.SetFloat("Speed", Mathf.Abs(_controller.Velocity.x) / MaxSpeed);
-		}*/
 
 		public void Freeze(bool freeze)
 		{
@@ -69,7 +52,7 @@ namespace Core
 						AudioSource.PlayClipAtPoint(PlayerHitSound, transform.position);
 					}
 
-					Animator.SetTrigger("Damage");
+					_animator.SetTrigger("Damage");
 					break;
 				}
 			}

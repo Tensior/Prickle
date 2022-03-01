@@ -1,4 +1,3 @@
-using System;
 using Core.Interfaces;
 using UnityEngine;
 
@@ -87,9 +86,7 @@ namespace Core.Characters
 
         private void Flip()
         {
-            var localScale = transform.localScale;
-            localScale = new Vector3(-localScale.x, localScale.y, localScale.z);
-            transform.localScale = localScale;
+            transform.Rotate(Vector3.up, 180f);
             _isFacingRight = !_isFacingRight;
         }
     }

@@ -51,7 +51,7 @@ namespace Core
 			base.OnInteractOther(other);
 
 			// TODO: remove it
-			if (other.gameObject.layer != 9)
+			if (other.gameObject.layer is not (9 or 13))
 			{
 				OnStopped();
 			}
