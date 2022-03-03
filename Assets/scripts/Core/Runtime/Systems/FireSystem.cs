@@ -1,4 +1,3 @@
-using System;
 using Core.Interfaces;
 using UnityEngine;
 
@@ -11,7 +10,7 @@ namespace Core.Systems
         [SerializeField] private int _fireRate;
         [SerializeField] private int _fireDistance;
         [SerializeField] private Transform _weaponPivot;
-        [SerializeField] private AudioClip _playerShootSound;
+        [SerializeField] private AudioClip _shootSound;
 
         private EntityType _type;
         private Animator _animator;
@@ -44,9 +43,13 @@ namespace Core.Systems
             
             _timeSinceLastFire = 0;
 
-            AudioSource.PlayClipAtPoint(_playerShootSound, weaponPosition);
+            AudioSource.PlayClipAtPoint(_shootSound, weaponPosition);
             _animator.SetTrigger("Fire");
         }
+
+        int IFireSystem.FireDistance => _fireDistance;
+        
+        Vector2 IFireSystem.WeaponPivot => _weaponPivot.position;
 
         private void Update()
         {

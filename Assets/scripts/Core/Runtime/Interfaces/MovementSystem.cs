@@ -44,5 +44,7 @@ namespace Core.Interfaces
             _characterController.Jump();
             AudioSource.PlayClipAtPoint(_jumpSound, _characterController.transform.position, 0.7f);
         }
+
+        ControllerState2D IMovementSystem.State => _characterController.State;
     }
 }

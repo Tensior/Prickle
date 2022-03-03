@@ -7,87 +7,41 @@ namespace Core.Characters
     {
         public bool IsDead => Character.IsDead;
         public bool IsFrozen => Character.IsFrozen;
-        
-        private bool _isFacingRight;
-        private Direction _horizontalDirection;
-        private bool _isJump;
-        private bool _isFire;
 
-        private void Awake()
-        {
-            _isFacingRight = transform.localScale.x > 0;
-        }
-
-        protected override void Update()
-        {
-            if (!IsDead)
-            {
-                HandleInput();
-            }
-
-            base.Update();
-        }
-
-        protected override void ProcessMovement(IMovementSystem movementSystem)
-        {
-            if (_horizontalDirection == Direction.Right && !_isFacingRight)
-            {
-                Flip();
-            }
-
-            if (_horizontalDirection == Direction.Left && _isFacingRight)
-            {
-                Flip();
-            }
-
-            movementSystem.Move(_horizontalDirection);
-
-            if (_isJump)
-            {
-                movementSystem.Jump();
-            }
-        }
-
-        protected override void ProcessFire(IFireSystem fireSystem)
-        {
-            if (_isFire)
-            {
-                fireSystem.Fire();
-            }
-        }
-
-        private void HandleInput()
+        protected override void ProcessMovement()
         {
             if (IsDead || IsFrozen)
             {
-                _horizontalDirection = Direction.None;
-                _isJump = false;
-                _isFire = false;
+                Direction = Direction.None;
+                IsJump = false;
                 return;
             }
             
             if (Input.GetKey(KeyCode.D))
             {
-                _horizontalDirection = Direction.Right;
+                Direction = Direction.Right;
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                _horizontalDirection = Direction.Left;
+                Direction = Direction.Left;
             }
             else
             {
-                _horizontalDirection = Direction.None;
+                Direction = Direction.None;
             }
 
-            _isJump = Input.GetKeyDown(KeyCode.Space);
-
-            _isFire = Input.GetMouseButtonDown(0);
+            IsJump = Input.GetKeyDown(KeyCode.Space);
         }
 
-        private void Flip()
+        protected override void ProcessFire()
         {
-            transform.Rotate(Vector3.up, 180f);
-            _isFacingRight = !_isFacingRight;
+            if (IsDead || IsFrozen)
+            {
+                IsFire = false;
+                return;
+            }
+            
+            IsFire = Input.GetMouseButtonDown(0);
         }
     }
 }

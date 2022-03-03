@@ -4,5 +4,6 @@ namespace Core.Interfaces
     {
         void Move(Direction horizontalDirection);
         void Jump();
+        ControllerState2D State { get; }
     }
 }

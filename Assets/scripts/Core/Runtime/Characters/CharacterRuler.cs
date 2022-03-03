@@ -5,8 +5,21 @@ namespace Core.Characters
 {
     public abstract class CharacterRuler : MonoBehaviour
     {
+        [SerializeField] private Direction _initialDirection;
+        [SerializeField] private bool _initialIsFacingRight;
+
         protected ICharacter Character;
-        
+        protected Direction Direction;
+        protected bool IsJump;
+        protected bool IsFire;
+        private bool _isFacingRight;
+
+        private void Awake()
+        {
+            Direction = _initialDirection;
+            _isFacingRight = _initialIsFacingRight;
+        }
+
         public void Init(ICharacter character)
         {
             Character = character;
@@ -16,17 +29,47 @@ namespace Core.Characters
         {
             if (Character.MovementSystem != null)
             {
-                ProcessMovement(Character.MovementSystem);
+                ProcessMovement();
+                
+                if (Direction == Direction.Right && !_isFacingRight)
+                {
+                    Flip();
+                }
+
+                if (Direction == Direction.Left && _isFacingRight)
+                {
+                    Flip();
+                }
+
+                Character.MovementSystem.Move(Direction);
+
+                if (IsJump)
+                {
+                    Character.MovementSystem.Jump();
+                }
             }
 
             if (Character.FireSystem != null)
             {
-                ProcessFire(Character.FireSystem);
+                ProcessFire();
+                
+                if (IsFire)
+                {
+                    Character.FireSystem.Fire();
+                }
             }
         }
 
-        protected abstract void ProcessMovement(IMovementSystem movementSystem);
+        // Fill _horizontalDirection and _isJump here
+        protected abstract void ProcessMovement();
 
-        protected abstract void ProcessFire(IFireSystem fireSystem);
+        // Fill _isFire here
+        protected abstract void ProcessFire();
+        
+        private void Flip()
+        {
+            transform.Rotate(Vector3.up, 180f);
+            _isFacingRight = !_isFacingRight;
+        }
     }
 }

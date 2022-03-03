@@ -267,6 +267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af8824560814a268f58c5209b253b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _initialDirection: 0
+  _initialIsFacingRight: 1
 --- !u!114 &1005706046674689390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +287,7 @@ MonoBehaviour:
   _fireRate: 2
   _fireDistance: 20
   _weaponPivot: {fileID: 4259017240590044}
-  _playerShootSound: {fileID: 8300000, guid: f09a1abb55517fc469e56fc4d9e193df, type: 3}
+  _shootSound: {fileID: 0}
 --- !u!114 &5131560526353918574
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -412,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584553349babe0e4385b61456868ddde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Destination: {fileID: 4510209104190962}
+  _maxDistance: 0
   Projectile: {fileID: 114831721838531446, guid: 67de7313b0893a64cb94b98cb56bf824,
     type: 3}
   SpawnEffect: {fileID: 1689836776509220, guid: 7f90b1a61eb1d924cab5abdb20685495,
@@ -618,8 +618,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf012ab4ae8f2c498bbcbad30cdb0a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxEHealth: 120
-  DestroyedEffect: {fileID: 1845385789528062, guid: f47ee37da4bd05c4a9ceb597c5adb264,
+  _type: 1
+  _maxHealth: 120
+  _animator: {fileID: 95301526193866506}
+  _destroyedEffect: {fileID: 1845385789528062, guid: f47ee37da4bd05c4a9ceb597c5adb264,
     type: 3}
 --- !u!114 &114452802772719320
 MonoBehaviour:
@@ -633,8 +635,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35962d7373a561446ab93bdb56482ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
-  _damage: 10
   _isImmediateKill: 0
 --- !u!95 &95301526193866506
 Animator:
