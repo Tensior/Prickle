@@ -1,15 +1,10 @@
 ﻿using Core.Characters;
-using Core.Interfaces;
 using UnityEngine;
 
 namespace Core
 {
 	public class Player : Character 
 	{
-		public GameObject OuchEffect;
-		public AudioClip PlayerHitSound;
-		public AudioClip PlayerHealthSound;
-
 		public void Freeze(bool freeze)
 		{
 			IsFrozen = freeze;
@@ -34,33 +29,6 @@ namespace Core
 			Health = ((IDamageable)this).MaxHealth;*/
 
 			transform.position = point.position;
-		}
-
-		protected override void OnHealthModified(int amount)
-		{
-			switch (amount)
-			{
-				case > 0:
-					AudioSource.PlayClipAtPoint(PlayerHealthSound, transform.position);
-					break;
-				case < 0:
-				{
-					Instantiate(OuchEffect, transform.position, transform.rotation);
-
-					if (((IDamageable)this).CurrentHealth >= 40)
-					{
-						AudioSource.PlayClipAtPoint(PlayerHitSound, transform.position);
-					}
-
-					_animator.SetTrigger("Damage");
-					break;
-				}
-			}
-		}
-
-		protected override void OnKilled()
-		{
-			LevelManager.Instance.KillPlayer();
 		}
 	}
 }

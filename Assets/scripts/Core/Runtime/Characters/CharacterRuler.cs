@@ -5,6 +5,7 @@ namespace Core.Characters
 {
     public abstract class CharacterRuler : MonoBehaviour
     {
+        // TODO: move to MovementSystem
         [SerializeField] private Direction _initialDirection;
         [SerializeField] private bool _initialIsFacingRight;
 
@@ -60,10 +61,10 @@ namespace Core.Characters
             }
         }
 
-        // Fill _horizontalDirection and _isJump here
+        // Fill Direction and IsJump here
         protected abstract void ProcessMovement();
 
-        // Fill _isFire here
+        // Fill IsFire here
         protected abstract void ProcessFire();
         
         private void Flip()

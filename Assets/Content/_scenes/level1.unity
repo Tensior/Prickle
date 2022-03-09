@@ -9551,6 +9551,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56551ec7b2e80a344b866b7139a14b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
+  _damage: 0
   _isImmediateKill: 0
   Sound: {fileID: 0}
 --- !u!1001 &533240813
@@ -17141,6 +17143,12 @@ PrefabInstance:
       propertyPath: Bounds
       value: 
       objectReference: {fileID: 2000719610}
+    - target: {fileID: 6529606616875102563, guid: 70f8bde3e1f698144a98cb9efbe6799c,
+        type: 3}
+      propertyPath: _ouchEffect
+      value: 
+      objectReference: {fileID: 1818786240954144, guid: d1001af4b65c9cb46823a356db9e7f3b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70f8bde3e1f698144a98cb9efbe6799c, type: 3}
 --- !u!1 &952632072
@@ -37332,6 +37340,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56551ec7b2e80a344b866b7139a14b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
+  _damage: 0
   _isImmediateKill: 0
   Sound: {fileID: 0}
 --- !u!61 &2124411924

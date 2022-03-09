@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 5907608248963581387}
   - component: {fileID: 4357578908962183981}
   - component: {fileID: 1509342308679931805}
+  - component: {fileID: 8819583821886913779}
   m_Layer: 12
   m_Name: nut
   m_TagString: Untagged
@@ -209,6 +210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35962d7373a561446ab93bdb56482ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
+  _damage: 0
   _isImmediateKill: 0
 --- !u!95 &95355789735544696
 Animator:
@@ -243,10 +246,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 1
-  _maxHealth: 120
-  _animator: {fileID: 95355789735544696}
-  _destroyedEffect: {fileID: 1845385789528062, guid: f47ee37da4bd05c4a9ceb597c5adb264,
-    type: 3}
 --- !u!114 &5907608248963581387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +295,22 @@ MonoBehaviour:
   _fireDistance: 10
   _weaponPivot: {fileID: 691923546198565725}
   _shootSound: {fileID: 8300000, guid: 733f22d217c554f47b22406abbe95e64, type: 3}
+  _shootEffect: {fileID: 0}
+--- !u!114 &8819583821886913779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618380521047646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e475682db41741ce92c4099fb24a18eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 60
+  _destroyedEffect: {fileID: 1845385789528062, guid: f47ee37da4bd05c4a9ceb597c5adb264,
+    type: 3}
 --- !u!1 &1622474066345452
 GameObject:
   m_ObjectHideFlags: 0

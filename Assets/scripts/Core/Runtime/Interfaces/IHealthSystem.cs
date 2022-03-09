@@ -1,8 +1,8 @@
 ﻿namespace Core.Interfaces
 {
-    public interface IDamageable
+    public interface IHealthSystem : IEntity
     {
-        EntityType Type { get; } //used to distinguish enemies from allies
+        void Init(EntityType type);
         int MaxHealth { get; }
         int CurrentHealth { get; }
         void ModifyHealth(int amount); //implementations must support both positive and negative amounts

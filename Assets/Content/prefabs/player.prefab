@@ -93,15 +93,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4660469342083120}
-  - component: {fileID: 114922207960925364}
-  - component: {fileID: 114817262453436732}
   - component: {fileID: 50289594554658108}
   - component: {fileID: 61051453715252550}
   - component: {fileID: 95981090727597408}
   - component: {fileID: 114045626134664828}
+  - component: {fileID: 114817262453436732}
+  - component: {fileID: 114922207960925364}
   - component: {fileID: 422070649646230653}
   - component: {fileID: 1005706046674689390}
   - component: {fileID: 5131560526353918574}
+  - component: {fileID: 6529606616875102563}
   m_Layer: 11
   m_Name: player
   m_TagString: Untagged
@@ -131,46 +132,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114922207960925364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063314127164966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b1e1767c7f58a04c952061abc8a3a5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _type: 0
-  _maxHealth: 120
-  _animator: {fileID: 95981090727597408}
-  OuchEffect: {fileID: 1319984020168462, guid: 94b7246759d17b44ba2894f229a2af8f, type: 3}
-  PlayerHitSound: {fileID: 8300000, guid: 98593d74668c92241ab0d236d64964ad, type: 3}
-  PlayerHealthSound: {fileID: 8300000, guid: 583269c908848934b964ad2685e41b78, type: 3}
---- !u!114 &114817262453436732
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1063314127164966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e868920edb8649747af186326c43208b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlatformMask:
-    serializedVersion: 2
-    m_Bits: 256
-  DefaultParameters:
-    MaxVelocity: {x: 3.4028235e+38, y: 3.4028235e+38}
-    SlopeLimit: 43
-    Gravity: -15
-    JumpRestrictions: 0
-    JumpFrequency: 0.25
-    JumpMagnitude: 12
 --- !u!50 &50289594554658108
 Rigidbody2D:
   serializedVersion: 4
@@ -255,6 +216,41 @@ MonoBehaviour:
   Below: 2
   Left: 1
   Right: 1
+--- !u!114 &114817262453436732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063314127164966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e868920edb8649747af186326c43208b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlatformMask:
+    serializedVersion: 2
+    m_Bits: 256
+  DefaultParameters:
+    MaxVelocity: {x: 3.4028235e+38, y: 3.4028235e+38}
+    SlopeLimit: 43
+    Gravity: -15
+    JumpRestrictions: 0
+    JumpFrequency: 0.25
+    JumpMagnitude: 12
+--- !u!114 &114922207960925364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063314127164966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b1e1767c7f58a04c952061abc8a3a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
 --- !u!114 &422070649646230653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +284,7 @@ MonoBehaviour:
   _fireDistance: 20
   _weaponPivot: {fileID: 4259017240590044}
   _shootSound: {fileID: 0}
+  _shootEffect: {fileID: 0}
 --- !u!114 &5131560526353918574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +301,23 @@ MonoBehaviour:
   _speedAccelerationOnGround: 10
   _speedAccelerationInAir: 5
   _jumpSound: {fileID: 8300000, guid: d26db5cc8b3f1bf45932dc2359cc4e68, type: 3}
+--- !u!114 &6529606616875102563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063314127164966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98bf034d871a41d5acfebd5379cee069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 120
+  _ouchEffect: {fileID: 1818786240954144, guid: d1001af4b65c9cb46823a356db9e7f3b,
+    type: 3}
+  _playerHitSound: {fileID: 8300000, guid: 98593d74668c92241ab0d236d64964ad, type: 3}
+  _playerHealthSound: {fileID: 8300000, guid: 909de1067c3631342af8ac08be0b3d8c, type: 3}
 --- !u!1 &1317165800413316
 GameObject:
   m_ObjectHideFlags: 0

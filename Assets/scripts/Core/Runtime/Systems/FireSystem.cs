@@ -7,10 +7,11 @@ namespace Core.Systems
     {
         [SerializeField] private Projectile _projectile;
         [SerializeField] private int _damage;
-        [SerializeField] private int _fireRate;
+        [SerializeField] private float _fireRate;
         [SerializeField] private int _fireDistance;
         [SerializeField] private Transform _weaponPivot;
         [SerializeField] private AudioClip _shootSound;
+        [SerializeField] private GameObject _shootEffect;
 
         private EntityType _type;
         private Animator _animator;
@@ -20,15 +21,14 @@ namespace Core.Systems
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            _timeBetweenFire = 1 / _fireRate;
         }
 
         void IFireSystem.Init(EntityType type)
         {
             _type = type;
-
-            _timeBetweenFire = 1 / (float)_fireRate;
         }
-
+        
         void IFireSystem.Fire()
         {
             if (_timeSinceLastFire < _timeBetweenFire)
@@ -43,6 +43,8 @@ namespace Core.Systems
             
             _timeSinceLastFire = 0;
 
+            if (_shootEffect != null)
+                Instantiate(_shootEffect, weaponPosition, _weaponPivot.rotation);
             AudioSource.PlayClipAtPoint(_shootSound, weaponPosition);
             _animator.SetTrigger("Fire");
         }

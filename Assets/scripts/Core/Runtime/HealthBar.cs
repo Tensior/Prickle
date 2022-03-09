@@ -32,7 +32,7 @@ namespace Core
 
 		public void Update()
 		{
-			var heartNum = ((IDamageable)_player).CurrentHealth;
+			var heartNum = _player.HealthSystem.CurrentHealth;
 
 			switch (heartNum)
 			{

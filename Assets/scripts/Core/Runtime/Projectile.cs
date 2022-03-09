@@ -1,5 +1,4 @@
 ﻿using Core.Interactables;
-using Core.Interfaces;
 using UnityEngine;
 
 namespace Core
@@ -40,9 +39,9 @@ namespace Core
 			OnStopped();
 		}
 
-		protected override void OnDamageDealt(IDamageable damageable)
+		protected override void OnDamageDealt()
 		{
-			base.OnDamageDealt(damageable);
+			base.OnDamageDealt();
 			OnStopped();
 		}
 

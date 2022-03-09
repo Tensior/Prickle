@@ -1,11 +1,10 @@
-using Core.Interfaces;
 using UnityEngine;
 
 namespace Core.Characters
 {
     public class PlayerCharacterRuler : CharacterRuler
     {
-        public bool IsDead => Character.IsDead;
+        public bool IsDead => Character.HealthSystem.IsDead;
         public bool IsFrozen => Character.IsFrozen;
 
         protected override void ProcessMovement()

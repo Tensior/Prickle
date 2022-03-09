@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core.Characters
 {
-    public class MovingEnemyCharacterRuler : CharacterRuler
+    public class EnemyCharacterRuler : CharacterRuler
     {
         protected override void ProcessMovement()
         {

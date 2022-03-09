@@ -3,42 +3,39 @@ using UnityEngine;
 
 namespace Core.Interactables
 {
-    public class DamageDealer : Interactable<IDamageable>, ITypedAmount
+    public class DamageDealer : Interactable<IHealthSystem>
     {
+        [SerializeField] private EntityType _type;
+        [SerializeField] private int _damage;
         [SerializeField] private bool _isImmediateKill;
 
-        EntityType ITypedAmount.Type => _type;
-        int ITypedAmount.Amount => -_damage;
-        bool ITypedAmount.IsFullAmount => _isImmediateKill;
-
-        private EntityType _type;
-        private int _damage;
-
-        public void Init(EntityType type, int damage)
+        protected void Init(EntityType type, int damage)
         {
             _type = type;
             _damage = damage;
         }
 
-        public override void OnInteract(IDamageable damageable)
+        public override void OnInteract(IHealthSystem healthSystem)
         {
-            if (_type == damageable.Type)
+            if (_type == healthSystem.Type)
             {
                 return;
             }
 
             if (_isImmediateKill)
             {
-                damageable.Kill();
+                healthSystem.Kill();
             }
             else
             {
-                damageable.ModifyHealth(-_damage);
+                healthSystem.ModifyHealth(-_damage);
             }
-            
-            OnDamageDealt(damageable);
+
+            OnDamageDealt();
         }
 
-        protected virtual void OnDamageDealt(IDamageable damageable) { }
+        protected virtual void OnDamageDealt()
+        {
+        }
     }
 }

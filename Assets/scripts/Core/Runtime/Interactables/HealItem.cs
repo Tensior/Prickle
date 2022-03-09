@@ -3,24 +3,24 @@ using UnityEngine;
 
 namespace Core.Interactables
 {
-	public class HealItem : Interactable<IDamageable>, ITypedAmount, IPlayerSpawnListener
+	public class HealItem : Interactable<IHealthSystem>, IPlayerSpawnListener
 	{
 		[SerializeField] private EntityType _type;
 		[SerializeField] private GameObject _effect;
 		[SerializeField] private int _healthToGive;
 		[SerializeField] private bool _isFullHeal;
 
-		EntityType ITypedAmount.Type => _type;
+		public EntityType Type => _type;
 
-		int ITypedAmount.Amount => _healthToGive;
+		public int Amount => _healthToGive;
 
-		bool ITypedAmount.IsFullAmount => _isFullHeal;
+		public bool IsFullAmount => _isFullHeal;
 
-		public override void OnInteract(IDamageable damageable)
+		public override void OnInteract(IHealthSystem healthSystem)
 		{
-			var heal = _isFullHeal ? damageable.MaxHealth : _healthToGive;
+			var heal = _isFullHeal ? healthSystem.MaxHealth : _healthToGive;
 			
-			damageable.ModifyHealth(heal);
+			healthSystem.ModifyHealth(heal);
 			
 			Instantiate(_effect, transform.position, transform.rotation);
 

@@ -35,7 +35,7 @@ namespace Core
 
 		public void Update()
 		{
-			if (((IDamageable)_player).IsDead)
+			if (_player.HealthSystem.IsDead)
 				return;
 
 			var colliderSize = new Vector2(_boxCollider.size.x * Mathf.Abs(transform.localScale.x), 
