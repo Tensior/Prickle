@@ -6,6 +6,7 @@ namespace Core.Systems
     public class FireSystem : MonoBehaviour, IFireSystem
     {
         [SerializeField] private Projectile _projectile;
+        [SerializeField] private float _projectileSpeed;
         [SerializeField] private int _damage;
         [SerializeField] private float _fireRate;
         [SerializeField] private int _fireDistance;
@@ -39,13 +40,21 @@ namespace Core.Systems
             var weaponPosition = _weaponPivot.position;
             
             var projectile = Instantiate(_projectile, weaponPosition, _weaponPivot.rotation);
-            projectile.Init(GetFireDestination(), 10, _type, _damage);
+            projectile.Init(GetFireDestination(), _projectileSpeed, _type, _damage);
             
             _timeSinceLastFire = 0;
 
             if (_shootEffect != null)
+            {
+                // TODO: add pools
                 Instantiate(_shootEffect, weaponPosition, _weaponPivot.rotation);
-            AudioSource.PlayClipAtPoint(_shootSound, weaponPosition);
+            }
+
+            if (_shootSound != null)
+            {
+                AudioSource.PlayClipAtPoint(_shootSound, weaponPosition);
+            }
+            
             _animator.SetTrigger("Fire");
         }
 

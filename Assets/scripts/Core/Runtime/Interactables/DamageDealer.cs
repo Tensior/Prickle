@@ -8,6 +8,7 @@ namespace Core.Interactables
         [SerializeField] private EntityType _type;
         [SerializeField] private int _damage;
         [SerializeField] private bool _isImmediateKill;
+        [SerializeField] private AudioClip _sound;
 
         protected void Init(EntityType type, int damage)
         {
@@ -36,6 +37,10 @@ namespace Core.Interactables
 
         protected virtual void OnDamageDealt()
         {
+            if (_sound != null)
+            {
+                AudioSource.PlayClipAtPoint(_sound, transform.position);
+            }
         }
     }
 }

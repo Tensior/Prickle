@@ -10,14 +10,13 @@ namespace Core.Interactables
 		[SerializeField] private int _healthToGive;
 		[SerializeField] private bool _isFullHeal;
 
-		public EntityType Type => _type;
-
-		public int Amount => _healthToGive;
-
-		public bool IsFullAmount => _isFullHeal;
-
 		public override void OnInteract(IHealthSystem healthSystem)
 		{
+			if (healthSystem.Type != _type)
+			{
+				return;
+			}
+
 			var heal = _isFullHeal ? healthSystem.MaxHealth : _healthToGive;
 			
 			healthSystem.ModifyHealth(heal);

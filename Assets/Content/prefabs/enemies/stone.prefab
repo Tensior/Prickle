@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 114841371374653760, guid: ae9860d32dfc86245803971a4c696a38,
     type: 3}
+  _projectileSpeed: 10
   _damage: 10
   _fireRate: 0.6666667
   _fireDistance: 20
@@ -148,6 +149,7 @@ MonoBehaviour:
   _type: 1
   _damage: 10
   _isImmediateKill: 0
+  _sound: {fileID: 0}
 --- !u!1 &1196023018560746
 GameObject:
   m_ObjectHideFlags: 0
