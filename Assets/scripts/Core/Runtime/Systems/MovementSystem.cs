@@ -1,6 +1,7 @@
+using Core.Interfaces;
 using UnityEngine;
 
-namespace Core.Interfaces
+namespace Core.Systems
 {
     [RequireComponent(typeof(Animator), typeof(CharacterController2D))]
     public class MovementSystem : MonoBehaviour, IMovementSystem
@@ -12,11 +13,13 @@ namespace Core.Interfaces
         
         private Animator _animator;
         private CharacterController2D _characterController;
+        private Collider2D _collider;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
             _characterController = GetComponent<CharacterController2D>();
+            _collider = GetComponent<Collider2D>();
         }
 
         void IMovementSystem.Move(Direction horizontalDirection)
@@ -46,5 +49,18 @@ namespace Core.Interfaces
         }
 
         ControllerState2D IMovementSystem.State => _characterController.State;
+
+        void IMovementSystem.Deactivate(Vector2 force)
+        {
+            _collider.enabled = false;
+            _characterController.HandleCollisions = false;
+            _characterController.SetForce(force);
+        }
+
+        void IMovementSystem.Activate()
+        {
+            _collider.enabled = true;
+            _characterController.HandleCollisions = true;
+        }
     }
 }

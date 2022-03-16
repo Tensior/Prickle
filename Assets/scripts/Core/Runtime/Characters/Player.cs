@@ -1,9 +1,11 @@
 ﻿using Core.Characters;
+using Core.Interfaces;
+using Core.Systems;
 using UnityEngine;
 
 namespace Core
 {
-	public class Player : Character 
+	public class Player : Character
 	{
 		public void Freeze(bool freeze)
 		{
@@ -12,21 +14,17 @@ namespace Core
 
 		public void OnDied()
 		{
-			/*_controller.HandleCollisions = false;
-			GetComponent<Collider2D>().enabled = false;
-			AudioSource.PlayClipAtPoint(DeathSound, transform.position, 0.5f);
-			_controller.SetForce(new Vector2(0, 10));*/
+			MovementSystem.Deactivate(new Vector2(0, 10));
 		}
 
 		public void SpawnAt(Transform point)
 		{
-			/*if (!_isFacingRight)
-				Flip();
-
-			IsDead = false;
-			GetComponent<Collider2D>().enabled = true;
-			_controller.HandleCollisions = true;
-			Health = ((IDamageable)this).MaxHealth;*/
+			MovementSystem.Activate();
+			HealthSystem.ModifyHealth(HealthSystem.MaxHealth);
+			if (!CharacterRuler.IsFacingRight)
+			{
+				CharacterRuler.Flip();
+			}
 
 			transform.position = point.position;
 		}

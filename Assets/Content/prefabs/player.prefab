@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3af8824560814a268f58c5209b253b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialDirection: 0
+  _initialDirection: 1
   _initialIsFacingRight: 1
 --- !u!114 &1005706046674689390
 MonoBehaviour:
@@ -319,6 +319,7 @@ MonoBehaviour:
     type: 3}
   _playerHitSound: {fileID: 8300000, guid: 98593d74668c92241ab0d236d64964ad, type: 3}
   _playerHealthSound: {fileID: 8300000, guid: 909de1067c3631342af8ac08be0b3d8c, type: 3}
+  _playerDeathSound: {fileID: 8300000, guid: 893e71412160b3e4caea170d0103eb42, type: 3}
 --- !u!1 &1317165800413316
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,33 +6,30 @@ namespace Core.Characters
     [RequireComponent(typeof(CharacterRuler))]
     public abstract class Character : MonoBehaviour, ICharacter
     {
-        public IHealthSystem HealthSystem;
+        [SerializeField] private EntityType _type;
         
         protected bool IsFrozen;
+        protected CharacterRuler CharacterRuler;
 
-        [SerializeField] private EntityType _type;
-
-        private CharacterRuler _characterRuler;
-        private IMovementSystem _movementSystem;
         private IFireSystem _fireSystem;
         private int _currentHealth;
 
-        IMovementSystem ICharacter.MovementSystem => _movementSystem;
+        public IMovementSystem MovementSystem { get; private set; }
 
         IFireSystem ICharacter.FireSystem => _fireSystem;
 
-        IHealthSystem ICharacter.HealthSystem => HealthSystem;
+        public IHealthSystem HealthSystem { get; private set; }
 
         bool ICharacter.IsFrozen => IsFrozen;
 
         private void Start()
         {
-            _characterRuler = GetComponent<CharacterRuler>();
-            _movementSystem = GetComponent<IMovementSystem>();
+            CharacterRuler = GetComponent<CharacterRuler>();
+            MovementSystem = GetComponent<IMovementSystem>();
             _fireSystem = GetComponent<IFireSystem>();
             HealthSystem = GetComponent<IHealthSystem>();
             
-            _characterRuler.Init(this);
+            CharacterRuler.Init(this);
             _fireSystem?.Init(_type);
             HealthSystem?.Init(_type);
         }

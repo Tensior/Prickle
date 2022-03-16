@@ -1,4 +1,5 @@
-﻿using Core.Interfaces;
+﻿using System;
+using Core.Interfaces;
 using UnityEngine;
 
 namespace Core.Characters
@@ -8,22 +9,30 @@ namespace Core.Characters
         // TODO: move to MovementSystem
         [SerializeField] private Direction _initialDirection;
         [SerializeField] private bool _initialIsFacingRight;
+        
+        [NonSerialized] public bool IsFacingRight;
 
         protected ICharacter Character;
         protected Direction Direction;
         protected bool IsJump;
         protected bool IsFire;
-        private bool _isFacingRight;
+
 
         private void Awake()
         {
             Direction = _initialDirection;
-            _isFacingRight = _initialIsFacingRight;
+            IsFacingRight = _initialIsFacingRight;
         }
 
         public void Init(ICharacter character)
         {
             Character = character;
+        }
+
+        public void Flip()
+        {
+            transform.Rotate(Vector3.up, 180f);
+            IsFacingRight = !IsFacingRight;
         }
 
         protected virtual void Update()
@@ -32,12 +41,12 @@ namespace Core.Characters
             {
                 ProcessMovement();
                 
-                if (Direction == Direction.Right && !_isFacingRight)
+                if (Direction == Direction.Right && !IsFacingRight)
                 {
                     Flip();
                 }
 
-                if (Direction == Direction.Left && _isFacingRight)
+                if (Direction == Direction.Left && IsFacingRight)
                 {
                     Flip();
                 }
@@ -66,11 +75,5 @@ namespace Core.Characters
 
         // Fill IsFire here
         protected abstract void ProcessFire();
-        
-        private void Flip()
-        {
-            transform.Rotate(Vector3.up, 180f);
-            _isFacingRight = !_isFacingRight;
-        }
     }
 }
