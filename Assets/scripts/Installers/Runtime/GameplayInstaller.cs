@@ -8,6 +8,7 @@ namespace Installers
     {
         public override void InstallBindings()
         {
+            Container.Bind<PointManager>().AsSingle().NonLazy();
             Container.Bind<Player>().FromComponentInHierarchy().AsSingle().NonLazy();
             Container.Bind<IPlayerSpawner>().To<PlayerSpawner>().AsSingle().NonLazy();
         }

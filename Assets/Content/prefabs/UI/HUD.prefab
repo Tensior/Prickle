@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 7855868776635561637}
   - component: {fileID: 4324684246762190622}
   - component: {fileID: 360654353246410722}
+  - component: {fileID: 8602422524383994295}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -363,6 +364,22 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &8602422524383994295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635487137514876106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1670825535, guid: c7bede90fe34f984fbb3e44973aa3428, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewAdapterTypeName: UnityWeld.Binding.Adapters.IntToStringAdapter
+  viewAdapterOptions: {fileID: 0}
+  viewModelPropertyName: UI.ScoreVM.Score
+  viewPropertyName: TMPro.TextMeshProUGUI.text
 --- !u!1 &963703825749097131
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4971259440490814574}
+  - component: {fileID: 3731849192883433489}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -515,6 +533,18 @@ RectTransform:
   m_AnchoredPosition: {x: -200, y: -108}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3731849192883433489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083767698001651146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05ded3b18c4446b8d005960ce505bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2419421184477756600
 GameObject:
   m_ObjectHideFlags: 0

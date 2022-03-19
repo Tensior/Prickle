@@ -4,7 +4,7 @@ namespace Core
 {
 	public class PointCounter : MonoBehaviour 
 	{
-		static public Sprite zeroS, oneS, twoS, threeS, fourS, fiveS, sixS, sevenS, eightS, nineS;
+		/*static public Sprite zeroS, oneS, twoS, threeS, fourS, fiveS, sixS, sevenS, eightS, nineS;
 		static public GameObject zeroOb, oneOb, twoOb, threeOb, fourOb, fiveOb;
 
 		public Sprite[] spriteList = new Sprite[] { zeroS, oneS, twoS, threeS, fourS, fiveS, sixS, sevenS, eightS, nineS};
@@ -40,7 +40,7 @@ namespace Core
 
 		void Update () 
 		{
-			sumS = GameManager.Instance.Points;
+			sumS = PointManager.Instance.Points;
 			ResetPoints();
 			objectList[0].gameObject.SetActive(true);
 
@@ -76,6 +76,6 @@ namespace Core
 			}
 			else
 				_portal.SetActive(false);
-		}
+		}*/
 	}
 }

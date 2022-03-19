@@ -1,5 +1,6 @@
 ﻿using Core.Interactables;
 using UnityEngine;
+using Zenject;
 
 namespace Core
 {
@@ -8,13 +9,20 @@ namespace Core
 		public GameObject Effect;
 		public int PointsToAdd = 1;
 		public AudioClip GetStarSound;
+		private PointManager _pointManager;
+
+		[Inject]
+		public void Inject(PointManager pointManager)
+		{
+			_pointManager = pointManager;
+		}
 
 		public override void OnInteract(Player player)
 		{
 			if (GetStarSound != null)
 				AudioSource.PlayClipAtPoint(GetStarSound, transform.position);
 
-			GameManager.Instance.AddPoints(PointsToAdd);
+			_pointManager.AddPoints(PointsToAdd);
 			Instantiate(Effect, transform.position, transform.rotation);
 
 			gameObject.SetActive(false);

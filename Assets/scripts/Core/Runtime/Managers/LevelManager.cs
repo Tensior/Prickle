@@ -37,12 +37,14 @@ namespace Core
 		public int BonusCutoffSeconds;
 		public int BonusSecondMultiplier; //
 		private IPlayerSpawner _playerSpawner;
+		private PointManager _pointManager;
 
 		[Inject]
-		public void Initialize(Player player, IPlayerSpawner playerSpawner)
+		public void Initialize(Player player, IPlayerSpawner playerSpawner, PointManager pointManager)
 		{
 			_player = player;
 			_playerSpawner = playerSpawner;
+			_pointManager = pointManager;
 		}
 
 		public void Awake()
@@ -94,8 +96,8 @@ namespace Core
 			_checkpoints[_currentCheckpointIndex].RespawnEnemyData(_player);
 			_checkpoints[_currentCheckpointIndex].PlayerHitCheckpoint();
 			//
-			GameManager.Instance.AddPoints(CurrentTimeBonus);
-			_savedPoints = GameManager.Instance.Points;
+			_pointManager.AddPoints(CurrentTimeBonus);
+			_savedPoints = _pointManager.Points;
 			_started = DateTime.UtcNow;
 
 		}
@@ -117,7 +119,7 @@ namespace Core
 
 			//
 			_started = DateTime.UtcNow;
-			GameManager.Instance.ResetPoints(_savedPoints);
+			_pointManager.ResetPoints(_savedPoints);
 		}
 
 		private void SpawnPlayerOnCurrentCheckpoint()

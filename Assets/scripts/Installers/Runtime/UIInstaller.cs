@@ -8,6 +8,7 @@ namespace Installers
         public override void InstallBindings()
         {
             Container.Bind<LivesVM>().FromComponentInHierarchy().AsSingle().NonLazy();
+            Container.Bind<ScoreVM>().FromComponentInHierarchy().AsSingle().NonLazy();
         }
     }
 }
