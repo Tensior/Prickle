@@ -8,28 +8,27 @@ namespace Core.Systems
         [SerializeField] private int _maxHealth;
         
         private EntityType _type;
-        private int _currentHealth;
         private bool _isDead;
 
         public EntityType Type => _type;
 
-        int IHealthSystem.MaxHealth => _maxHealth;
+        public int MaxHealth => _maxHealth;
 
-        int IHealthSystem.CurrentHealth => _currentHealth;
+        public virtual int CurrentHealth { get; protected set; }
 
         public void Init(EntityType type)
         {
             _type = type;
-            _currentHealth = _maxHealth;
+            CurrentHealth = _maxHealth;
         }
 
         void IHealthSystem.ModifyHealth(int amount)
         {
-            _currentHealth = Mathf.Min(_maxHealth, _currentHealth + amount);
+            CurrentHealth = Mathf.Min(_maxHealth, CurrentHealth + amount);
 
             OnHealthModified(amount);
 
-            if (_currentHealth <= 0f)
+            if (CurrentHealth <= 0f)
             {
                 OnKilled();
             }
@@ -37,12 +36,12 @@ namespace Core.Systems
 
         void IHealthSystem.Kill()
         {
-            _currentHealth = 0;
+            CurrentHealth = 0;
 
             OnKilled();
         }
 
-        bool IHealthSystem.IsDead => _currentHealth <= 0;
+        bool IHealthSystem.IsDead => CurrentHealth <= 0;
         
         protected abstract void OnHealthModified(int amount);
 

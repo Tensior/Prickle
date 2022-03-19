@@ -1,5 +1,7 @@
 using Core.Interfaces;
+using UI;
 using UnityEngine;
+using Zenject;
 
 namespace Core.Systems
 {
@@ -11,12 +13,34 @@ namespace Core.Systems
         [SerializeField] private AudioClip _playerDeathSound;
 
         private Animator _animator;
+        private LivesVM _livesVM;
+        private int _currentHealth;
+
+        public override int CurrentHealth
+        {
+            get => _currentHealth;
+            protected set
+            {
+                _currentHealth = value;
+                
+                if (_livesVM != null)
+                {
+                    _livesVM.Percentage = (float)value / MaxHealth;
+                }
+            }
+        }
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
         }
-        
+
+        [Inject]
+        public void Inject(LivesVM livesVM)
+        {
+            _livesVM = livesVM;
+        }
+
         protected override void OnHealthModified(int amount)
         {
             switch (amount)

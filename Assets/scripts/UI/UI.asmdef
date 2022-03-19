@@ -1,14 +1,14 @@
 {
-    "name": "Core",
+    "name": "UI",
     "rootNamespace": "",
-    "references": [
-        "GUID:ecee854b2e969544f85a50e0b46a319f"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "UnityWeld.dll"
+    ],
     "autoReferenced": false,
     "defineConstraints": [],
     "versionDefines": [],
