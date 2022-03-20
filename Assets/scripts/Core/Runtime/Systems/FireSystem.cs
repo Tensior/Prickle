@@ -1,5 +1,6 @@
 using Core.Interfaces;
 using UnityEngine;
+using Zenject;
 
 namespace Core.Systems
 {
@@ -18,6 +19,18 @@ namespace Core.Systems
         private Animator _animator;
         private float _timeBetweenFire;
         private float _timeSinceLastFire;
+        private Projectile.Factory _projectileFactory;
+
+        [Inject]
+        public void Inject(DiContainer diContainer)
+        {
+            _projectileFactory = diContainer.TryResolveId<Projectile.Factory>(_projectile.name);
+        }
+        /*[Inject]
+        public void Inject([Inject(Id = "player_bullet")] Projectile.Factory projectileFactory)
+        {
+            _projectileFactory = projectileFactory;
+        }*/
 
         private void Awake()
         {
@@ -39,8 +52,8 @@ namespace Core.Systems
 
             var weaponPosition = _weaponPivot.position;
             
-            var projectile = Instantiate(_projectile, weaponPosition, _weaponPivot.rotation);
-            projectile.Init(GetFireDestination(), _projectileSpeed, _type, _damage);
+            var projectile = _projectileFactory.Create(GetFireDestination(), _projectileSpeed, _type, _damage);
+            projectile.transform.SetPositionAndRotation(weaponPosition, _weaponPivot.rotation);
             
             _timeSinceLastFire = 0;
 

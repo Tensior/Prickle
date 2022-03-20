@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
+using Zenject;
 
 namespace Core
 {
-	public class SimpleEnemyAI : MonoBehaviour, IPlayerSpawnListener
+	/*public class SimpleEnemyAI : MonoBehaviour, IPlayerSpawnListener
 	{
 		public float Speed;
 		public float FireRate = 1;
 		public Projectile Projectile;
 		public GameObject DestroyedEffect;
 		public AudioClip ShootSound;
-
 
 		private CharacterController2D _controller;
 		private Vector2 _direction;
@@ -66,6 +66,6 @@ namespace Core
 
 		}
 
-	}
+	}*/
 }
 

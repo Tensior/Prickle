@@ -376,7 +376,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4908897459394830}
-  - component: {fileID: 114944705492378300}
   - component: {fileID: 82766407607701558}
   m_Layer: 12
   m_Name: start
@@ -400,27 +399,6 @@ Transform:
   m_Father: {fileID: 4856323119158944}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114944705492378300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769227347363100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584553349babe0e4385b61456868ddde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxDistance: 0
-  Projectile: {fileID: 114831721838531446, guid: 67de7313b0893a64cb94b98cb56bf824,
-    type: 3}
-  SpawnEffect: {fileID: 1689836776509220, guid: 7f90b1a61eb1d924cab5abdb20685495,
-    type: 3}
-  Speed: 9
-  FireRate: 2
-  ShootSound: {fileID: 0}
-  Animator: {fileID: 95301526193866506}
 --- !u!82 &82766407607701558
 AudioSource:
   m_ObjectHideFlags: 0
@@ -691,7 +669,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 60
-  _destroyedEffect: {fileID: 0}
+  _destroyedEffect: {fileID: 1845385789528062, guid: f47ee37da4bd05c4a9ceb597c5adb264,
+    type: 3}
 --- !u!114 &4143595922928570516
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 
 namespace Core
 {
-	public class PathedProjectileSpawner : MonoBehaviour
+	/*public class PathedProjectileSpawner : MonoBehaviour
 	{
 		[SerializeField] private float _maxDistance;
 		public Projectile Projectile;
@@ -48,6 +48,6 @@ namespace Core
 			Gizmos.color = Color.red;
 			Gizmos.DrawLine(transform.position, _shootTarget);
 		}
-	}
+	}*/
 }
 
