@@ -1,5 +1,6 @@
 ﻿using Core;
 using Core.Interfaces;
+using Core.Providers;
 using UnityEngine;
 using Zenject;
 
@@ -17,28 +18,40 @@ namespace Installers
             Container.Bind<PointManager>().AsSingle().NonLazy();
             Container.Bind<Player>().FromComponentInHierarchy().AsSingle().NonLazy();
             Container.Bind<IPlayerSpawner>().To<PlayerSpawner>().AsSingle().NonLazy();
+            
+            InstallInput();
+            InstallPools();
+        }
 
+        private void InstallInput()
+        {
+            Container.Bind<GameplayControls>().FromNew().AsSingle().NonLazy();
+            Container.Bind<IInputProvider>().To<InputProvider>().AsSingle().NonLazy();
+        }
+
+        private void InstallPools()
+        {
             Container.BindFactory<Vector2, float, EntityType, int, Projectile, Projectile.Factory>()
                      .WithId(_playerProjectile.name)
                      .FromMonoPoolableMemoryPool(x =>
                          x.WithInitialSize(5)
                           .FromComponentInNewPrefab(_playerProjectile)
                           .UnderTransformGroup("PlayerProjectilePool"));
-            
+
             Container.BindFactory<Vector2, float, EntityType, int, Projectile, Projectile.Factory>()
                      .WithId(_stoneProjectile.name)
                      .FromMonoPoolableMemoryPool(x =>
                          x.WithInitialSize(5)
                           .FromComponentInNewPrefab(_stoneProjectile)
                           .UnderTransformGroup("StoneProjectilePool"));
-            
+
             Container.BindFactory<Vector2, float, EntityType, int, Projectile, Projectile.Factory>()
                      .WithId(_nutProjectile.name)
                      .FromMonoPoolableMemoryPool(x =>
                          x.WithInitialSize(5)
                           .FromComponentInNewPrefab(_nutProjectile)
                           .UnderTransformGroup("NutProjectilePool"));
-            
+
             Container.BindFactory<Vector2, float, EntityType, int, Projectile, Projectile.Factory>()
                      .WithId(_flowerProjectile.name)
                      .FromMonoPoolableMemoryPool(x =>

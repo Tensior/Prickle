@@ -1,4 +1,5 @@
-using UnityEngine;
+using Core.Interfaces;
+using Zenject;
 
 namespace Core.Characters
 {
@@ -6,6 +7,14 @@ namespace Core.Characters
     {
         public bool IsDead => Character.HealthSystem.IsDead;
         public bool IsFrozen => Character.IsFrozen;
+        
+        private IInputProvider _inputProvider;
+
+        [Inject]
+        public void Inject(IInputProvider inputProvider)
+        {
+            _inputProvider = inputProvider;
+        }
 
         protected override void ProcessMovement()
         {
@@ -16,11 +25,11 @@ namespace Core.Characters
                 return;
             }
             
-            if (Input.GetKey(KeyCode.D))
+            if (_inputProvider.IsMoveRight)
             {
                 Direction = Direction.Right;
             }
-            else if (Input.GetKey(KeyCode.A))
+            else if (_inputProvider.IsMoveLeft)
             {
                 Direction = Direction.Left;
             }
@@ -29,7 +38,7 @@ namespace Core.Characters
                 Direction = Direction.None;
             }
 
-            IsJump = Input.GetKeyDown(KeyCode.Space);
+            IsJump = _inputProvider.IsJump;
         }
 
         protected override void ProcessFire()
@@ -40,7 +49,7 @@ namespace Core.Characters
                 return;
             }
             
-            IsFire = Input.GetMouseButtonDown(0);
+            IsFire = _inputProvider.IsFire;
         }
     }
 }
