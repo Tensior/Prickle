@@ -1,17 +1,12 @@
 {
-    "name": "UI",
+    "name": "Meta",
     "rootNamespace": "",
-    "references": [
-        "GUID:48f7fca5c0b977e4d96598abc366c952"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": true,
-    "precompiledReferences": [
-        "UnityWeld.dll",
-        "Zenject-usage.dll"
-    ],
+    "overrideReferences": false,
+    "precompiledReferences": [],
     "autoReferenced": false,
     "defineConstraints": [],
     "versionDefines": [],
