@@ -1,6 +1,4 @@
 ﻿using Core.Characters;
-using Core.Interfaces;
-using Core.Systems;
 using UnityEngine;
 
 namespace Core

@@ -1,5 +1,6 @@
 ﻿using Core;
 using Core.Interfaces;
+using Core.Managers;
 using Core.Providers;
 using UnityEngine;
 using Zenject;
@@ -16,9 +17,11 @@ namespace Installers
         public override void InstallBindings()
         {
             Container.Bind<PointManager>().AsSingle().NonLazy();
+            Container.Bind<UIManager>().FromComponentInHierarchy().AsSingle().NonLazy();
             Container.Bind<Player>().FromComponentInHierarchy().AsSingle().NonLazy();
             Container.Bind<IPlayerSpawner>().To<PlayerSpawner>().AsSingle().NonLazy();
-            
+            Container.Bind<IPauseController>().To<PauseController>().AsSingle().NonLazy();
+
             InstallInput();
             InstallPools();
         }

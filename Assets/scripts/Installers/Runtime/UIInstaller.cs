@@ -1,3 +1,4 @@
+using Meta;
 using UI;
 using Zenject;
 
@@ -9,6 +10,7 @@ namespace Installers
         {
             Container.Bind<LivesVM>().FromComponentInHierarchy().AsSingle().NonLazy();
             Container.Bind<ScoreVM>().FromComponentInHierarchy().AsSingle().NonLazy();
+            Container.Bind<PauseMenuVM>().FromComponentInHierarchy().AsSingle().NonLazy();
         }
     }
 }

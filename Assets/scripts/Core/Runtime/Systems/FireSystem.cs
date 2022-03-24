@@ -26,11 +26,6 @@ namespace Core.Systems
         {
             _projectileFactory = diContainer.TryResolveId<Projectile.Factory>(_projectile.name);
         }
-        /*[Inject]
-        public void Inject([Inject(Id = "player_bullet")] Projectile.Factory projectileFactory)
-        {
-            _projectileFactory = projectileFactory;
-        }*/
 
         private void Awake()
         {

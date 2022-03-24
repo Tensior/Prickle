@@ -22,7 +22,7 @@ namespace Core.Characters
 
         bool ICharacter.IsFrozen => IsFrozen;
 
-        private void Start()
+        private void Awake()
         {
             CharacterRuler = GetComponent<CharacterRuler>();
             MovementSystem = GetComponent<IMovementSystem>();
