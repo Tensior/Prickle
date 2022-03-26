@@ -15,10 +15,12 @@ namespace Core
 			_lastPosition = transform.position;
 		}
 
-		public void Update() {
+		public void Update() 
+		{
 			var parallax = (_lastPosition.x - transform.position.x) * ParallaxScale;
 
-			for (var i = 0; i < Backgrounds.Length; i++) {
+			for (var i = 0; i < Backgrounds.Length; i++) 
+			{
 				var backgroundTargetPosition = Backgrounds[i].position.x + parallax * (i * ParallaxReductionFactor + 1);
 				Backgrounds[i].position = Vector3.Lerp(
 					Backgrounds[i].position,

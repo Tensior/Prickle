@@ -313,6 +313,7 @@ MonoBehaviour:
   _type: 1
   _damage: 10
   _isImmediateKill: 0
+  _sound: {fileID: 0}
 --- !u!114 &2346258652771340417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialDirection: 0
   _initialIsFacingRight: 0
+  _fireWhenPlayerVisible: 0
 --- !u!114 &6224630124535838136
 MonoBehaviour:
   m_ObjectHideFlags: 0

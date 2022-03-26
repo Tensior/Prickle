@@ -635,6 +635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initialDirection: 0
   _initialIsFacingRight: 0
+  _fireWhenPlayerVisible: 1
 --- !u!114 &3114044956426197561
 MonoBehaviour:
   m_ObjectHideFlags: 0

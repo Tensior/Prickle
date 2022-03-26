@@ -5,6 +5,8 @@ namespace Core.Characters
 {
     public class EnemyCharacterRuler : CharacterRuler
     {
+        [SerializeField] private bool _fireWhenPlayerVisible;
+        
         protected override void ProcessMovement()
         {
             IsJump = false;
@@ -32,11 +34,18 @@ namespace Core.Characters
 
         protected override void ProcessFire()
         {
-            IsFire = Physics2D.Raycast(
-                transform.position, 
-                Direction.ToVector2(), 
-                Character.FireSystem.FireDistance,
-                1 << LayerMask.NameToLayer("Player"));
+            if (_fireWhenPlayerVisible)
+            {
+                IsFire = Physics2D.Raycast(
+                    transform.position,
+                    Direction.ToVector2(),
+                    Character.FireSystem.FireDistance,
+                    1 << LayerMask.NameToLayer("Player"));
+            }
+            else
+            {
+                IsFire = true;
+            }
         }
     }
 }

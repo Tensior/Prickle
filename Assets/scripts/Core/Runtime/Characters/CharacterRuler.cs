@@ -17,7 +17,6 @@ namespace Core.Characters
         protected bool IsJump;
         protected bool IsFire;
 
-
         private void Awake()
         {
             Direction = _initialDirection;
