@@ -3,55 +3,51 @@ using UnityEngine;
 
 namespace Core
 {
-	public class FollowPath : MonoBehaviour {
-		public enum FollowType { 
-			MoveTowards,
-			Lerp
-		}
+	public class FollowPath : MonoBehaviour
+	{
+		[SerializeField] private PathDefinition _path;
+		[SerializeField] private float _speed = 1;
+		[SerializeField] private float _maxDistanceToGoal = .1f;
 
-		public FollowType Type = FollowType.MoveTowards;
-		public PathDefinition Path;
-		public float Speed = 1;
-		public float MaxDistanceToGoal = .1f;
-		//public AudioSource PathSound;
+		private IEnumerator<Transform> _pathEnumerator;
 
-		private IEnumerator<Transform> _currentPoint;
-
-		public void Start() {
-
-			if (Path == null) {
+		public void Start()
+		{
+			if (_path == null)
+			{
 				Debug.LogError("Path cannot be null", gameObject);
 				return;
 			}
 
-			_currentPoint = Path.GetPathEnumerator();
-			_currentPoint.MoveNext();
+			_pathEnumerator = _path.GetPathEnumerator();
+			_pathEnumerator.MoveNext();
 
-			if (_currentPoint.Current == null)
+			if (_pathEnumerator.Current == null)
+			{
 				return;
+			}
 
-			transform.position = _currentPoint.Current.position;
-		} 
-
-		public void Update() {
-		
-			if (_currentPoint == null || _currentPoint.Current == null)
-				return;
-
-			if (Type == FollowType.MoveTowards)
-				transform.position = Vector3.MoveTowards(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
-			else if (Type == FollowType.Lerp)
-				transform.position = Vector3.Lerp(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
-
-			var distanceSquared = (transform.position - _currentPoint.Current.position).sqrMagnitude;
-
-
-
-			if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
-				_currentPoint.MoveNext();
-
-
+			transform.position = _pathEnumerator.Current.position;
 		}
 
+		public void Update()
+		{
+			if (_pathEnumerator == null || _pathEnumerator.Current == null)
+			{
+				return;
+			}
+
+			transform.position = Vector3.MoveTowards(
+				transform.position,
+				_pathEnumerator.Current.position,
+				Time.deltaTime * _speed);
+
+			var distanceSquared = (transform.position - _pathEnumerator.Current.position).sqrMagnitude;
+
+			if (distanceSquared < _maxDistanceToGoal * _maxDistanceToGoal)
+			{
+				_pathEnumerator.MoveNext();
+			}
+		}
 	}
 }
