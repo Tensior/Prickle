@@ -4,34 +4,32 @@ namespace Core
 {
 	public class BackgroundParallax : MonoBehaviour
 	{
-		public Transform[] Backgrounds;
-		public float ParallaxScale;
-		public float ParallaxReductionFactor;
-		public float Smoothing;
+		[SerializeField] private Transform[] _backgrounds;
+		[SerializeField] private float _parallaxScale;
+		[SerializeField] private float _parallaxReductionFactor;
+		[SerializeField] private float _smoothing;
 
 		private Vector3 _lastPosition;
 
-		public void Start() {
+		public void Start() 
+		{
 			_lastPosition = transform.position;
 		}
 
 		public void Update() 
 		{
-			var parallax = (_lastPosition.x - transform.position.x) * ParallaxScale;
+			var parallax = (_lastPosition.x - transform.position.x) * _parallaxScale;
 
-			for (var i = 0; i < Backgrounds.Length; i++) 
+			for (var i = 0; i < _backgrounds.Length; i++) 
 			{
-				var backgroundTargetPosition = Backgrounds[i].position.x + parallax * (i * ParallaxReductionFactor + 1);
-				Backgrounds[i].position = Vector3.Lerp(
-					Backgrounds[i].position,
-					new Vector3(backgroundTargetPosition, Backgrounds[i].position.y, Backgrounds[i].position.z),
-					Smoothing * Time.deltaTime);
+				var backgroundTargetPosition = _backgrounds[i].position.x + parallax * (i * _parallaxReductionFactor + 1);
+				_backgrounds[i].position = Vector3.Lerp(
+					_backgrounds[i].position,
+					new Vector3(backgroundTargetPosition, _backgrounds[i].position.y, _backgrounds[i].position.z),
+					_smoothing * Time.deltaTime);
 			}
 
 			_lastPosition = transform.position;
-	
 		}
-
-
 	}
 }

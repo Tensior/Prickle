@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Core
 {
-	[Serializable] //for manipulation in inspector window
+	[Serializable]
 	public class ControllerParameters2D 
 	{
 		public enum JumpBehaviour 
-		{ //используется для объявления перечисления
+		{
 			CanJumpOnGround,
 			CanJumpAnywhere,
 			CantJump,
@@ -26,7 +26,5 @@ namespace Core
 
 		//how much force would be added to velocity.y for jumping
 		public float JumpMagnitude = 12;
-
-
 	}
 }

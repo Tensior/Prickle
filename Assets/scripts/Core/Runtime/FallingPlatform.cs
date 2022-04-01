@@ -1,31 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Core.Interactables;
 using UnityEngine;
 
 namespace Core
 {
-	public class FallingPlatform : MonoBehaviour {
+	public class FallingPlatform : Interactable<Player> 
+	{
+		[SerializeField] private PathDefinition _path;
+		[SerializeField] private float _speed = 1;
+		[SerializeField] private float _maxDistanceToGoal = 0.1f;
+		[SerializeField] private float _fallTime = 0.5f;
 
-
-		public PathDefinition Path;
-		public float Speed = 1;
-		public float MaxDistanceToGoal = .1f;
-		public float falltime = 0.5f;
-
-		private IEnumerator<Transform> _currentPoint;
-
+		private IEnumerator<Transform> _pathEnumerator;
 
 		public void Update()
 		{
-			if (_currentPoint == null || _currentPoint.Current == null)
+			if (_pathEnumerator == null || _pathEnumerator.Current == null)
 				return;
 
-			transform.position = Vector3.Lerp(transform.position, _currentPoint.Current.position, Time.deltaTime * Speed);
+			transform.position = Vector3.Lerp(transform.position, _pathEnumerator.Current.position, Time.deltaTime * _speed);
 
-			var distanceSquared = (transform.position - _currentPoint.Current.position).sqrMagnitude;
+			var distanceSquared = (transform.position - _pathEnumerator.Current.position).sqrMagnitude;
 
-			if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
-				_currentPoint.MoveNext();
+			if (distanceSquared < _maxDistanceToGoal * _maxDistanceToGoal)
+				_pathEnumerator.MoveNext();
 		}
 
 
@@ -36,15 +35,15 @@ namespace Core
 				yield return new WaitForSeconds(0.001f);
 				falltime -= Time.deltaTime;
 			}
-			_currentPoint = Path.GetPathEnumerator();
-			_currentPoint.MoveNext();
+			_pathEnumerator = _path.GetPathEnumerator();
+			_pathEnumerator.MoveNext();
 
-			transform.position = _currentPoint.Current.position;
+			transform.position = _pathEnumerator.Current.position;
 		}
 
-		void OnTriggerEnter2D(Collider2D col)
+		public override void OnInteract(Player subject)
 		{
-			StartCoroutine(PlatformDown(falltime));
+			StartCoroutine(PlatformDown(_fallTime));
 		}
 	}
 }
