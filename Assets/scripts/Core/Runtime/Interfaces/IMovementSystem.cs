@@ -6,8 +6,9 @@ namespace Core.Interfaces
     {
         void Move(Direction horizontalDirection);
         void Jump();
-        ControllerState2D State { get; }
         void Deactivate(Vector2 force);
         void Activate();
+        ControllerState2D State { get; }
+        CharacterController2D Controller2D { get; }
     }
 }

@@ -5,11 +5,14 @@ namespace Core
 {
 	public class FollowPath : MonoBehaviour
 	{
+		private const float MAX_DISTANCE_TO_GOAL_SQR = 0.01f;
+		
 		[SerializeField] private PathDefinition _path;
 		[SerializeField] private float _speed = 1;
-		[SerializeField] private float _maxDistanceToGoal = .1f;
 
 		private IEnumerator<Transform> _pathEnumerator;
+
+		public PathDefinition Path => _path;
 
 		public void Start()
 		{
@@ -44,10 +47,13 @@ namespace Core
 
 			var distanceSquared = (transform.position - _pathEnumerator.Current.position).sqrMagnitude;
 
-			if (distanceSquared < _maxDistanceToGoal * _maxDistanceToGoal)
+			if (distanceSquared < MAX_DISTANCE_TO_GOAL_SQR)
 			{
+				OnBeforeMoveNext(_pathEnumerator.Current);
 				_pathEnumerator.MoveNext();
 			}
 		}
+
+		protected virtual void OnBeforeMoveNext(Transform prevTransform) { }
 	}
 }

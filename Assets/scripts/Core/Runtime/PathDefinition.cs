@@ -32,16 +32,21 @@ namespace Core
 			}
 		}
 
-		public void OnDrawGizmos() {
-			if (Points == null || Points.Length < 2)
+		public void OnDrawGizmos()
+		{
+			if (Points == null)
+			{
 				return;
+			}
 
-			//new
-			var points = Points.Where(t => t != null).ToList();
+			var points = Points.Where(point => point != null).ToList();
 			if (points.Count < 2)
+			{
 				return;
+			}
 
-			for (var i = 1; i < Points.Length; i++) {
+			for (var i = 1; i < Points.Length; i++)
+			{
 				Gizmos.DrawLine(Points[i - 1].position, Points[i].position);
 			}
 		}

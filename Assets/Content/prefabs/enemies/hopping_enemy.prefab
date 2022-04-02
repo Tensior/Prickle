@@ -149,10 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d8b2709b74ca445aa0b17a76e377a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Path: {fileID: 114104533790129740}
-  Speed: 3
-  MaxDistanceToGoal: 0.1
+  _path: {fileID: 114104533790129740}
+  _speed: 10
 --- !u!58 &58845141615434310
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -205,6 +203,7 @@ MonoBehaviour:
   _type: 1
   _damage: 10
   _isImmediateKill: 0
+  _sound: {fileID: 0}
 --- !u!1 &1766400425840354
 GameObject:
   m_ObjectHideFlags: 0

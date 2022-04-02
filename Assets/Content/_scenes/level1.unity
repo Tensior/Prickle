@@ -787,6 +787,11 @@ PrefabInstance:
       propertyPath: Speed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 114917281459526778, guid: 1fa90a9653fbe9247b434f0792180f4e,
+        type: 3}
+      propertyPath: _path
+      value: 
+      objectReference: {fileID: 896835060}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa90a9653fbe9247b434f0792180f4e, type: 3}
 --- !u!1 &29270698
@@ -8229,6 +8234,11 @@ PrefabInstance:
       propertyPath: Speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114917281459526778, guid: 1fa90a9653fbe9247b434f0792180f4e,
+        type: 3}
+      propertyPath: _path
+      value: 
+      objectReference: {fileID: 860045483}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa90a9653fbe9247b434f0792180f4e, type: 3}
 --- !u!1001 &481419876
@@ -10754,6 +10764,11 @@ PrefabInstance:
       propertyPath: Speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 114917281459526778, guid: 1fa90a9653fbe9247b434f0792180f4e,
+        type: 3}
+      propertyPath: _path
+      value: 
+      objectReference: {fileID: 1236570695}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa90a9653fbe9247b434f0792180f4e, type: 3}
 --- !u!1 &678840723
@@ -13140,10 +13155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d8b2709b74ca445aa0b17a76e377a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Path: {fileID: 808201975}
-  Speed: 2
-  MaxDistanceToGoal: 0.1
+  _path: {fileID: 0}
+  _speed: 1
 --- !u!1001 &777515779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15888,6 +15901,11 @@ PrefabInstance:
       propertyPath: Speed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114917281459526778, guid: 1fa90a9653fbe9247b434f0792180f4e,
+        type: 3}
+      propertyPath: _path
+      value: 
+      objectReference: {fileID: 287558451}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa90a9653fbe9247b434f0792180f4e, type: 3}
 --- !u!1 &938876506
@@ -19668,6 +19686,11 @@ PrefabInstance:
       propertyPath: Speed
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114917281459526778, guid: 1fa90a9653fbe9247b434f0792180f4e,
+        type: 3}
+      propertyPath: _path
+      value: 
+      objectReference: {fileID: 861000226}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa90a9653fbe9247b434f0792180f4e, type: 3}
 --- !u!4 &1121082196 stripped
@@ -23240,6 +23263,11 @@ PrefabInstance:
       propertyPath: Speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114917281459526778, guid: 1fa90a9653fbe9247b434f0792180f4e,
+        type: 3}
+      propertyPath: _path
+      value: 
+      objectReference: {fileID: 637272177}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fa90a9653fbe9247b434f0792180f4e, type: 3}
 --- !u!1 &1376824297
@@ -28068,10 +28096,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d8b2709b74ca445aa0b17a76e377a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Path: {fileID: 1769022547}
-  Speed: 1
-  MaxDistanceToGoal: 0.1
+  _path: {fileID: 0}
+  _speed: 1
 --- !u!1 &1641613682
 GameObject:
   m_ObjectHideFlags: 0
@@ -34060,10 +34086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4d8b2709b74ca445aa0b17a76e377a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 0
-  Path: {fileID: 1870108844}
-  Speed: 1
-  MaxDistanceToGoal: 0.1
+  _path: {fileID: 0}
+  _speed: 1
 --- !u!1 &2004507810
 GameObject:
   m_ObjectHideFlags: 0
@@ -35590,6 +35614,11 @@ PrefabInstance:
     - target: {fileID: 114917281459526778, guid: 1fa90a9653fbe9247b434f0792180f4e,
         type: 3}
       propertyPath: Path
+      value: 
+      objectReference: {fileID: 313717805}
+    - target: {fileID: 114917281459526778, guid: 1fa90a9653fbe9247b434f0792180f4e,
+        type: 3}
+      propertyPath: _path
       value: 
       objectReference: {fileID: 313717805}
     m_RemovedComponents: []

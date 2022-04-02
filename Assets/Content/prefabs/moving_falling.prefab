@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 4699276319315718}
   - component: {fileID: 61720210597494098}
   - component: {fileID: 114793801666056808}
+  - component: {fileID: 4875103942445622274}
   - component: {fileID: 95416179621283334}
   m_Layer: 8
   m_Name: branch_0
@@ -139,8 +140,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _path: {fileID: 114354049787671310}
   _speed: 1
-  _maxDistanceToGoal: 0.1
-  _fallTime: 0.5
+  _timeBeforeFall: 0.5
+--- !u!114 &4875103942445622274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391945374291746}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4d8b2709b74ca445aa0b17a76e377a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _path: {fileID: 114354049787671310}
+  _speed: 5
 --- !u!95 &95416179621283334
 Animator:
   serializedVersion: 4

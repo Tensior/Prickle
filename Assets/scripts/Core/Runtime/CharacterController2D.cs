@@ -40,7 +40,7 @@ namespace Core
 		private BoxCollider2D _boxCollider;
 		private ControllerParameters2D _overrideParameters;
 		private float _jumpIn;
-		private GameObject _lastStandingOn;
+		//private GameObject _lastStandingOn;
 
 		private Vector3
 			_activeGlobalPlatformPoint,
@@ -143,7 +143,7 @@ namespace Core
 				_activeLocalPlatformPoint = StandingOn.transform.InverseTransformPoint(transform.position);
 
 
-				if (_lastStandingOn != StandingOn)
+				/*if (_lastStandingOn != StandingOn)
 				{
 					if (_lastStandingOn != null)
 						_lastStandingOn.SendMessage("ControllerExit2D", this, SendMessageOptions.DontRequireReceiver);
@@ -152,12 +152,15 @@ namespace Core
 					_lastStandingOn = StandingOn;
 				}
 				else if (StandingOn != null)
+				{
 					StandingOn.SendMessage("ControllerStay2D", this, SendMessageOptions.DontRequireReceiver);
+				}*/
 			}
-			else if (_lastStandingOn != null) {
+			/*else if (_lastStandingOn != null)
+			 {
 				_lastStandingOn.SendMessage("ControllerExit2D", this, SendMessageOptions.DontRequireReceiver);
 				_lastStandingOn = null;
-			}
+			}*/
 		}
 
 

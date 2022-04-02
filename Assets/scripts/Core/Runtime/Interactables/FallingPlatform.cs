@@ -1,29 +1,21 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using Core.Interfaces;
 using UnityEngine;
 
 namespace Core.Interactables
 {
-	public class FallingPlatform : Interactable<Player> 
+	[RequireComponent(typeof(FollowPath))]
+	public class FallingPlatform : Interactable<Player>, IPlayerSpawnListener 
 	{
-		[SerializeField] private PathDefinition _path;
-		[SerializeField] private float _speed = 1;
-		[SerializeField] private float _maxDistanceToGoal = 0.1f;
 		[SerializeField] private float _timeBeforeFall = 0.5f;
 
-		private IEnumerator<Transform> _pathEnumerator;
+		private Vector3 _defaultPosition;
+		private FollowPath _followPath;
 
-		public void Update()
+		private void Awake()
 		{
-			if (_pathEnumerator == null || _pathEnumerator.Current == null)
-				return;
-
-			transform.position = Vector3.Lerp(transform.position, _pathEnumerator.Current.position, Time.deltaTime * _speed);
-
-			var distanceSquared = (transform.position - _pathEnumerator.Current.position).sqrMagnitude;
-
-			if (distanceSquared < _maxDistanceToGoal * _maxDistanceToGoal)
-				_pathEnumerator.MoveNext();
+			_defaultPosition = transform.position;
+			_followPath = GetComponent<FollowPath>();
 		}
 
 		public override void OnInteract(Player subject)
@@ -35,10 +27,16 @@ namespace Core.Interactables
 		{
 			yield return new WaitForSeconds(fallTime);
 
-			_pathEnumerator = _path.GetPathEnumerator();
-			_pathEnumerator.MoveNext();
+			_followPath.enabled = true;
 
-			transform.position = _pathEnumerator.Current.position;
+			var pathEnumerator = _followPath.Path.GetPathEnumerator();
+			pathEnumerator.MoveNext();
+		}
+
+		void IPlayerSpawnListener.OnPlayerSpawn()
+		{
+			_followPath.enabled = false;
+			transform.position = _defaultPosition;
 		}
 	}
 }

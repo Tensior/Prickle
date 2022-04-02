@@ -1,4 +1,6 @@
-﻿namespace Core.Characters
+﻿using Core.Interfaces;
+
+namespace Core.Characters
 {
 	public class Enemy : Character, IPlayerSpawnListener
 	{

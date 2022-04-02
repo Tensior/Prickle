@@ -49,6 +49,7 @@ namespace Core.Systems
         }
 
         ControllerState2D IMovementSystem.State => _characterController.State;
+        CharacterController2D IMovementSystem.Controller2D => _characterController;
 
         void IMovementSystem.Deactivate(Vector2 force)
         {

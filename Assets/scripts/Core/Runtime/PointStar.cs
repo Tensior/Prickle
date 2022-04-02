@@ -1,4 +1,5 @@
 ﻿using Core.Interactables;
+using Core.Interfaces;
 using UnityEngine;
 using Zenject;
 
