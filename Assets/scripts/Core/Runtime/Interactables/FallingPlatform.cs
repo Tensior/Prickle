@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Core.Interfaces;
+using Core.Path;
 using UnityEngine;
 
 namespace Core.Interactables

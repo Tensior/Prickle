@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Interactables;
 using Core.Interfaces;
 using Core.Managers;
 using Core.Providers;

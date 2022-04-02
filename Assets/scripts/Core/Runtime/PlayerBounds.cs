@@ -1,5 +1,4 @@
-﻿using Core.Interfaces;
-using Core.Managers;
+﻿using Core.Managers;
 using UnityEngine;
 using Zenject;
 
@@ -14,14 +13,14 @@ namespace Core
 			Kill
 		}
 
-		public BoxCollider2D Bounds;
+		public Collider2D Bounds;
 		public BoundsBehavior Above;
 		public BoundsBehavior Below;
 		public BoundsBehavior Left;
 		public BoundsBehavior Right;
 
 		private Player _player;
-		private BoxCollider2D _boxCollider;
+		private BoxCollider2D _playerCollider;
 		
 		[Inject]
 		public void Initialize(Player player)
@@ -31,7 +30,7 @@ namespace Core
 
 		public void Start()
 		{
-			_boxCollider = GetComponent<BoxCollider2D>();
+			_playerCollider = _player.GetComponent<BoxCollider2D>();
 		}
 
 		public void Update()
@@ -39,8 +38,8 @@ namespace Core
 			if (_player.HealthSystem.IsDead)
 				return;
 
-			var colliderSize = new Vector2(_boxCollider.size.x * Mathf.Abs(transform.localScale.x), 
-				_boxCollider.size.y * Mathf.Abs(transform.localScale.y)) / 2;
+			var colliderSize = new Vector2(_playerCollider.size.x * Mathf.Abs(transform.localScale.x), 
+				_playerCollider.size.y * Mathf.Abs(transform.localScale.y)) / 2;
 
 			if (Above != BoundsBehavior.Nothing && transform.position.y + colliderSize.y > Bounds.bounds.max.y)
 				ApplyBoundsBehavior(Above, new Vector2(transform.position.x, Bounds.bounds.max.y - colliderSize.y));

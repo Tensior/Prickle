@@ -1,6 +1,6 @@
 ﻿using UI;
 
-namespace Core
+namespace Core.Managers
 {
 	public class PointManager
 	{
@@ -17,8 +17,6 @@ namespace Core
 			}
 		}
 
-		//
-
 		public PointManager(ScoreVM scoreVM)
 		{
 			_scoreVM = scoreVM;
@@ -29,12 +27,11 @@ namespace Core
 			Points = 0;
 		}
 
-		//
 		public void ResetPoints(int points)
 		{
 			Points = points;
 		}
-		//
+
 		public void AddPoints(int pointsToAdd)
 		{
 			Points += pointsToAdd;

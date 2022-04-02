@@ -5761,7 +5761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 1165400528}
   - {fileID: 1462539497}
 --- !u!4 &287558452
@@ -6095,7 +6095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 595881322}
   - {fileID: 1050614037}
 --- !u!4 &313717806
@@ -10404,7 +10404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 1057989600}
   - {fileID: 565564442}
 --- !u!4 &637272178
@@ -13987,7 +13987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 1064976675}
   - {fileID: 20996232}
 --- !u!1 &814545517
@@ -14640,7 +14640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 316484668}
   - {fileID: 1414318112}
 --- !u!4 &860045484
@@ -14689,7 +14689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 1064257381}
   - {fileID: 1458445552}
 --- !u!4 &861000227
@@ -15166,7 +15166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 2017320850}
   - {fileID: 980324953}
 --- !u!4 &896835061
@@ -16265,7 +16265,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Bounds
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2000719612}
     - target: {fileID: 6529606616875102563, guid: 70f8bde3e1f698144a98cb9efbe6799c,
         type: 3}
       propertyPath: _ouchEffect
@@ -21215,7 +21215,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 54524216}
   - {fileID: 438557988}
 --- !u!4 &1236570696
@@ -30079,7 +30079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 1257590532}
   - {fileID: 1934154589}
 --- !u!1 &1769168791
@@ -31934,7 +31934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 1474765658}
   - {fileID: 1573269293}
 --- !u!1 &1871919958

@@ -1,5 +1,6 @@
 ﻿using Core.Interactables;
 using Core.Interfaces;
+using Core.Managers;
 using UnityEngine;
 using Zenject;
 
@@ -7,9 +8,10 @@ namespace Core
 {
 	public class PointStar : Interactable<Player>, IPlayerSpawnListener
 	{
-		public GameObject Effect;
-		public int PointsToAdd = 1;
-		public AudioClip GetStarSound;
+		[SerializeField] private GameObject _effect;
+		[SerializeField] private int _pointsToAdd = 1;
+		[SerializeField] private AudioClip _getStarSound;
+		
 		private PointManager _pointManager;
 
 		[Inject]
@@ -20,12 +22,17 @@ namespace Core
 
 		public override void OnInteract(Player player)
 		{
-			if (GetStarSound != null)
-				AudioSource.PlayClipAtPoint(GetStarSound, transform.position);
+			if (_getStarSound != null)
+			{
+				AudioSource.PlayClipAtPoint(_getStarSound, transform.position);
+			}
 
-			_pointManager.AddPoints(PointsToAdd);
-			Instantiate(Effect, transform.position, transform.rotation);
-
+			if (_effect != null)
+			{
+				Instantiate(_effect, transform.position, transform.rotation);
+			}
+			
+			_pointManager.AddPoints(_pointsToAdd);
 			gameObject.SetActive(false);
 		}
 

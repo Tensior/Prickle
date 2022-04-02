@@ -6,7 +6,7 @@ namespace Core
 {
 	[Serializable]
 	public class QuestSetting
-	{ //QuestManager -> QuestController
+	{
 		public enum QuestStatus
 		{
 			Unassigned = 0,
@@ -20,7 +20,6 @@ namespace Core
 
 	public class QuestController : MonoBehaviour
 	{
-
 		public QuestSetting[] Quests;
 		private static QuestController SingletonInstance = null;
 		public static QuestController ThisInstance

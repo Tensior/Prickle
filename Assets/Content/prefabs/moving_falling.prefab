@@ -138,8 +138,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f360fcf7a399d6d49894b03baa9e1a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _path: {fileID: 114354049787671310}
-  _speed: 1
   _timeBeforeFall: 0.5
 --- !u!114 &4875103942445622274
 MonoBehaviour:
@@ -336,6 +334,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe351791cf371734a94d6fd422dfe935, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Points:
+  _points:
   - {fileID: 4946402767245388}
   - {fileID: 4128668550821602}

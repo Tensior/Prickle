@@ -1,9 +1,8 @@
 ﻿using System;
-using Core.Interactables;
 using UnityEngine;
 using Zenject;
 
-namespace Core
+namespace Core.Interactables
 {
 	public class Projectile : DamageDealer, IPoolable<Vector2, float, EntityType, int, IMemoryPool>, IDisposable
 	{

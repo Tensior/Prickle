@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Core
+namespace Core.Path
 {
     public class FollowPathWithDeactivation : FollowPath
     {
