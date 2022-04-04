@@ -141,26 +141,7 @@ namespace Core
 			{
 				_activeGlobalPlatformPoint = transform.position;
 				_activeLocalPlatformPoint = StandingOn.transform.InverseTransformPoint(transform.position);
-
-
-				/*if (_lastStandingOn != StandingOn)
-				{
-					if (_lastStandingOn != null)
-						_lastStandingOn.SendMessage("ControllerExit2D", this, SendMessageOptions.DontRequireReceiver);
-
-					StandingOn.SendMessage("ControllerEnter2D", this, SendMessageOptions.DontRequireReceiver);
-					_lastStandingOn = StandingOn;
-				}
-				else if (StandingOn != null)
-				{
-					StandingOn.SendMessage("ControllerStay2D", this, SendMessageOptions.DontRequireReceiver);
-				}*/
 			}
-			/*else if (_lastStandingOn != null)
-			 {
-				_lastStandingOn.SendMessage("ControllerExit2D", this, SendMessageOptions.DontRequireReceiver);
-				_lastStandingOn = null;
-			}*/
 		}
 
 

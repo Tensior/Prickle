@@ -19,6 +19,7 @@ namespace Installers
         {
             Container.Bind<PointManager>().AsSingle().NonLazy();
             Container.Bind<UIManager>().FromComponentInHierarchy().AsSingle().NonLazy();
+            Container.Bind<IQuestManager>().To<QuestManager>().FromComponentInHierarchy().AsSingle().NonLazy();
             Container.Bind<Player>().FromComponentInHierarchy().AsSingle().NonLazy();
             Container.Bind<IPlayerSpawner>().To<PlayerSpawner>().AsSingle().NonLazy();
             Container.Bind<IPauseController>().To<PauseController>().AsSingle().NonLazy();
