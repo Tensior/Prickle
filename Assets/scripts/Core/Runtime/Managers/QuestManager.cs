@@ -14,7 +14,10 @@ namespace Core.Managers
 
 		private void Awake()
 		{
-			throw new NotImplementedException();
+			foreach (var startQuest in _startQuests)
+			{
+				AddQuest(startQuest);
+			}
 		}
 
 		private void Update()
@@ -29,7 +32,7 @@ namespace Core.Managers
 			}
 		}
 
-		void IQuestManager.AddQuest(IQuest quest)
+		public void AddQuest(IQuest quest)
 		{
 			if (quest == null)
 			{
