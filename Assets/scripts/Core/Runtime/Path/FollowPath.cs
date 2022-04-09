@@ -9,6 +9,7 @@ namespace Core.Path
 		
 		[SerializeField] private PathDefinition _path;
 		[SerializeField] private float _speed = 1;
+		[SerializeField] private FollowType _type = FollowType.MoveTowards;
 
 		private IEnumerator<Transform> _pathEnumerator;
 
@@ -40,10 +41,15 @@ namespace Core.Path
 				return;
 			}
 
-			transform.position = Vector3.MoveTowards(
-				transform.position,
-				_pathEnumerator.Current.position,
-				Time.deltaTime * _speed);
+			switch (_type)
+			{
+				case FollowType.MoveTowards:
+					transform.position = Vector3.MoveTowards(transform.position, _pathEnumerator.Current.position, Time.deltaTime * _speed);
+					break;
+				case FollowType.Lerp:
+					transform.position = Vector3.Lerp(transform.position, _pathEnumerator.Current.position, Time.deltaTime * _speed);
+					break;
+			}
 
 			var distanceSquared = (transform.position - _pathEnumerator.Current.position).sqrMagnitude;
 
@@ -55,5 +61,11 @@ namespace Core.Path
 		}
 
 		protected virtual void OnBeforeMoveNext(Transform prevTransform) { }
+
+		private enum FollowType
+		{
+			MoveTowards,
+			Lerp
+		}
 	}
 }

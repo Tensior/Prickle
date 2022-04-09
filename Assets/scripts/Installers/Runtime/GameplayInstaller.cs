@@ -36,28 +36,28 @@ namespace Installers
 
         private void InstallPools()
         {
-            Container.BindFactory<Vector2, float, EntityType, int, Projectile, Projectile.Factory>()
+            Container.BindFactory<Vector2, float, EntityType, float, Projectile, Projectile.Factory>()
                      .WithId(_playerProjectile.name)
                      .FromMonoPoolableMemoryPool(x =>
                          x.WithInitialSize(5)
                           .FromComponentInNewPrefab(_playerProjectile)
                           .UnderTransformGroup("PlayerProjectilePool"));
 
-            Container.BindFactory<Vector2, float, EntityType, int, Projectile, Projectile.Factory>()
+            Container.BindFactory<Vector2, float, EntityType, float, Projectile, Projectile.Factory>()
                      .WithId(_stoneProjectile.name)
                      .FromMonoPoolableMemoryPool(x =>
                          x.WithInitialSize(5)
                           .FromComponentInNewPrefab(_stoneProjectile)
                           .UnderTransformGroup("StoneProjectilePool"));
 
-            Container.BindFactory<Vector2, float, EntityType, int, Projectile, Projectile.Factory>()
+            Container.BindFactory<Vector2, float, EntityType, float, Projectile, Projectile.Factory>()
                      .WithId(_nutProjectile.name)
                      .FromMonoPoolableMemoryPool(x =>
                          x.WithInitialSize(5)
                           .FromComponentInNewPrefab(_nutProjectile)
                           .UnderTransformGroup("NutProjectilePool"));
 
-            Container.BindFactory<Vector2, float, EntityType, int, Projectile, Projectile.Factory>()
+            Container.BindFactory<Vector2, float, EntityType, float, Projectile, Projectile.Factory>()
                      .WithId(_flowerProjectile.name)
                      .FromMonoPoolableMemoryPool(x =>
                          x.WithInitialSize(5)

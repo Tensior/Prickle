@@ -99,10 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d94591ea2e59d41921a0b7c3ecebfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sound: {fileID: 8300000, guid: 7582cceb3213f3744bb4598f475f7ff2, type: 3}
+  _type: 0
+  _damage: 0.75
   _isImmediateKill: 0
   _destroyEffect: {fileID: 1818786240954144, guid: d1001af4b65c9cb46823a356db9e7f3b,
     type: 3}
-  _destroySound: {fileID: 8300000, guid: f09a1abb55517fc469e56fc4d9e193df, type: 3}
 --- !u!61 &61002323999773910
 BoxCollider2D:
   m_ObjectHideFlags: 0

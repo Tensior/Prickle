@@ -6,7 +6,7 @@ namespace Core.Systems
     {
         [SerializeField] private GameObject _destroyedEffect;
 
-        protected override void OnHealthModified(int amount) { }
+        protected override void OnHealthModified(float amount) { }
 
         protected override void OnKilled()
         {

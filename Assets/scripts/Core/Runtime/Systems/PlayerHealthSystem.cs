@@ -15,9 +15,9 @@ namespace Core.Systems
 
         private Animator _animator;
         private LivesVM _livesVM;
-        private int _currentHealth;
+        private float _currentHealth;
 
-        public override int CurrentHealth
+        public override float CurrentHealth
         {
             get => _currentHealth;
             protected set
@@ -26,7 +26,7 @@ namespace Core.Systems
                 
                 if (_livesVM != null)
                 {
-                    _livesVM.Percentage = (float)value / MaxHealth;
+                    _livesVM.Percentage = value / MaxHealth;
                 }
             }
         }
@@ -42,7 +42,7 @@ namespace Core.Systems
             _livesVM = livesVM;
         }
 
-        protected override void OnHealthModified(int amount)
+        protected override void OnHealthModified(float amount)
         {
             switch (amount)
             {

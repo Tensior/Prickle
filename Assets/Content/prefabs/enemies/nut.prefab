@@ -276,8 +276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 114831721838531446, guid: 67de7313b0893a64cb94b98cb56bf824,
     type: 3}
-  _projectileSpeed: 10
-  _damage: 10
+  _projectileSpeed: 7
+  _damage: 1
   _fireRate: 1
   _fireDistance: 10
   _weaponPivot: {fileID: 691923546198565725}
@@ -295,7 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e475682db41741ce92c4099fb24a18eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 60
+  _maxHealth: 3
   _destroyedEffect: {fileID: 1845385789528062, guid: f47ee37da4bd05c4a9ceb597c5adb264,
     type: 3}
 --- !u!114 &6170968393471943021
@@ -310,10 +310,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29edc07717d04538910dd465e30bb3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
-  _damage: 5
-  _isImmediateKill: 0
   _sound: {fileID: 0}
+  _type: 1
+  _damage: 1
+  _isImmediateKill: 0
 --- !u!1 &1622474066345452
 GameObject:
   m_ObjectHideFlags: 0

@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 0
   _effect: {fileID: 1712650902451500, guid: f710cda3030b3ca45a09a01ec9ca95b8, type: 3}
-  _healthToGive: 10
+  _healthToGive: 1
   _isFullHeal: 0
 --- !u!58 &58171561052855652
 CircleCollider2D:

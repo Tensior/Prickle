@@ -4,10 +4,9 @@ using Zenject;
 
 namespace Core.Interactables
 {
-	public class Projectile : DamageDealer, IPoolable<Vector2, float, EntityType, int, IMemoryPool>, IDisposable
+	public class Projectile : DamageDealer, IPoolable<Vector2, float, EntityType, float, IMemoryPool>, IDisposable
 	{
 		[SerializeField] private GameObject _destroyEffect;
-		[SerializeField] private AudioClip _destroySound;
 		
 		private float _speed;
 		private Vector2 _destination;
@@ -49,6 +48,11 @@ namespace Core.Interactables
 			{
 				OnStopped();
 			}
+			
+			if (_sound != null)
+			{
+				AudioSource.PlayClipAtPoint(_sound, transform.position);
+			}
 		}
 
 		private void OnStopped()
@@ -56,11 +60,6 @@ namespace Core.Interactables
 			if (_destroyEffect != null)
 			{
 				Instantiate(_destroyEffect, transform.position, transform.rotation);
-			}
-
-			if (_destroySound != null)
-			{
-				AudioSource.PlayClipAtPoint(_destroySound, transform.position);
 			}
 
 			Dispose();
@@ -77,10 +76,10 @@ namespace Core.Interactables
 			Vector2 destination,
 			float speed,
 			EntityType type,
-			int damage,
+			float damage,
 			IMemoryPool pool)
 		{
-			base.Init(type, damage);
+			Init(type, damage);
 
 			_speed = speed;
 			_destination = destination;
@@ -93,7 +92,7 @@ namespace Core.Interactables
 			_pool.Despawn(this);
 		}
 		
-		public class Factory : PlaceholderFactory<Vector2, float, EntityType, int, Projectile>
+		public class Factory : PlaceholderFactory<Vector2, float, EntityType, float, Projectile>
 		{
 		}
 	}

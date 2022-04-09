@@ -150,7 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _path: {fileID: 114104533790129740}
-  _speed: 10
+  _speed: 3
+  _type: 1
 --- !u!58 &58845141615434310
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -200,10 +201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29edc07717d04538910dd465e30bb3aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
-  _damage: 10
-  _isImmediateKill: 0
   _sound: {fileID: 0}
+  _type: 1
+  _damage: 1
+  _isImmediateKill: 0
 --- !u!1 &1766400425840354
 GameObject:
   m_ObjectHideFlags: 0

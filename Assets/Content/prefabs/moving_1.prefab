@@ -513,6 +513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25439ba137f97b40abd03121f80cbe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpMagnitude: 4
+  _jumpMagnitude: 10
   _jumpSound: {fileID: 0}
   _animator: {fileID: 95066619073864458}

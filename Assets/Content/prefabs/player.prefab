@@ -117,7 +117,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063314127164966}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.882, y: 3.51, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
@@ -152,7 +152,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!61 &61051453715252550
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -279,12 +279,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectile: {fileID: 114906503444369556, guid: e9aeafeaa4a38b248b4315cfa41cc27e,
     type: 3}
-  _projectileSpeed: 10
-  _damage: 20
+  _projectileSpeed: 7
+  _damage: 0.75
   _fireRate: 2
   _fireDistance: 20
   _weaponPivot: {fileID: 4259017240590044}
-  _shootSound: {fileID: 0}
+  _shootSound: {fileID: 8300000, guid: f09a1abb55517fc469e56fc4d9e193df, type: 3}
   _shootEffect: {fileID: 0}
 --- !u!114 &5131560526353918574
 MonoBehaviour:
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d2fd722e81472faaa2138494a9a94e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 8
+  _maxSpeed: 5
   _speedAccelerationOnGround: 10
   _speedAccelerationInAir: 5
   _jumpSound: {fileID: 8300000, guid: d26db5cc8b3f1bf45932dc2359cc4e68, type: 3}
@@ -314,11 +314,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98bf034d871a41d5acfebd5379cee069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 120
-  _ouchEffect: {fileID: 1818786240954144, guid: d1001af4b65c9cb46823a356db9e7f3b,
+  _maxHealth: 3
+  _ouchEffect: {fileID: 1319984020168462, guid: 94b7246759d17b44ba2894f229a2af8f,
     type: 3}
   _playerHitSound: {fileID: 8300000, guid: 98593d74668c92241ab0d236d64964ad, type: 3}
-  _playerHealthSound: {fileID: 8300000, guid: 909de1067c3631342af8ac08be0b3d8c, type: 3}
+  _playerHealthSound: {fileID: 8300000, guid: 583269c908848934b964ad2685e41b78, type: 3}
   _playerDeathSound: {fileID: 8300000, guid: 893e71412160b3e4caea170d0103eb42, type: 3}
 --- !u!1 &1317165800413316
 GameObject:

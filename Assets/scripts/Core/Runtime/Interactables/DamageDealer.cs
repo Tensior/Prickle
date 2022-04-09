@@ -5,12 +5,12 @@ namespace Core.Interactables
 {
     public class DamageDealer : Interactable<IHealthSystem>
     {
+        [SerializeField] protected AudioClip _sound;
         [SerializeField] private EntityType _type;
-        [SerializeField] private int _damage;
+        [SerializeField] private float _damage;
         [SerializeField] private bool _isImmediateKill;
-        [SerializeField] private AudioClip _sound;
 
-        protected void Init(EntityType type, int damage)
+        protected void Init(EntityType type, float damage)
         {
             _type = type;
             _damage = damage;

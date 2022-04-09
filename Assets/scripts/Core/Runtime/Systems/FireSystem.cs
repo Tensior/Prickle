@@ -9,7 +9,7 @@ namespace Core.Systems
     {
         [SerializeField] private Projectile _projectile;
         [SerializeField] private float _projectileSpeed;
-        [SerializeField] private int _damage;
+        [SerializeField] private float _damage;
         [SerializeField] private float _fireRate;
         [SerializeField] private int _fireDistance;
         [SerializeField] private Transform _weaponPivot;

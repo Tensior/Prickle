@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d94591ea2e59d41921a0b7c3ecebfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
+  _sound: {fileID: 0}
+  _type: 1
   _damage: 0
   _isImmediateKill: 0
   _destroyEffect: {fileID: 0}
-  _destroySound: {fileID: 0}
 --- !u!58 &58287275849909338
 CircleCollider2D:
   m_ObjectHideFlags: 0

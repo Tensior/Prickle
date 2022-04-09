@@ -12,9 +12,9 @@ namespace Core.Systems
 
         public EntityType Type => _type;
 
-        public int MaxHealth => _maxHealth;
+        public float MaxHealth => _maxHealth;
 
-        public virtual int CurrentHealth { get; protected set; }
+        public virtual float CurrentHealth { get; protected set; }
 
         public void Init(EntityType type)
         {
@@ -22,7 +22,7 @@ namespace Core.Systems
             CurrentHealth = _maxHealth;
         }
 
-        void IHealthSystem.ModifyHealth(int amount)
+        void IHealthSystem.ModifyHealth(float amount)
         {
             CurrentHealth = Mathf.Min(_maxHealth, CurrentHealth + amount);
 
@@ -43,7 +43,7 @@ namespace Core.Systems
 
         bool IHealthSystem.IsDead => CurrentHealth <= 0;
         
-        protected abstract void OnHealthModified(int amount);
+        protected abstract void OnHealthModified(float amount);
 
         protected abstract void OnKilled();
     }
