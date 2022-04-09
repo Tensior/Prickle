@@ -280,7 +280,7 @@ MonoBehaviour:
   _projectile: {fileID: 114906503444369556, guid: e9aeafeaa4a38b248b4315cfa41cc27e,
     type: 3}
   _projectileSpeed: 7
-  _damage: 0.75
+  _damage: 1
   _fireRate: 2
   _fireDistance: 20
   _weaponPivot: {fileID: 4259017240590044}

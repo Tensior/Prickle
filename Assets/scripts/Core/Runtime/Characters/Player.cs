@@ -18,7 +18,7 @@ namespace Core
 		public void SpawnAt(Transform point)
 		{
 			MovementSystem.Activate();
-			HealthSystem.ModifyHealth(HealthSystem.MaxHealth);
+			HealthSystem.SetMaxHealth();
 			if (!CharacterRuler.IsFacingRight)
 			{
 				CharacterRuler.Flip();

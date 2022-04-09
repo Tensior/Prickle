@@ -41,6 +41,11 @@ namespace Core.Systems
             OnKilled();
         }
 
+        void IHealthSystem.SetMaxHealth()
+        {
+            CurrentHealth = _maxHealth;
+        }
+
         bool IHealthSystem.IsDead => CurrentHealth <= 0;
         
         protected abstract void OnHealthModified(float amount);

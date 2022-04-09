@@ -8,6 +8,7 @@ namespace Core.Quests
     {
         [SerializeField] private int _diamondCount;
         [SerializeField] private GameObject _portal;
+        [SerializeField] private AudioSource _rewardAudio;
         
         private PointManager _pointManager;
 
@@ -24,8 +25,8 @@ namespace Core.Quests
 
         public override void ApplyReward()
         {
-            GetComponent<AudioSource>()?.Play();
             _portal.SetActive(true);
+            _rewardAudio.Play();
         }
     }
 }

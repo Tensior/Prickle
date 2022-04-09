@@ -15,18 +15,18 @@ namespace Meta
             _musicController = musicController;
         }
 
-        Task ISceneLoader.LoadLevelAsync()
+        async Task ISceneLoader.LoadLevelAsync()
         {
             _musicController.StopCurrentMusicAsync();
+            await LoadSceneAsync(LEVEL1);
             _musicController.PlayLevelMusic(LEVEL1);
-            return LoadSceneAsync(LEVEL1);
         }
 
-        Task ISceneLoader.LoadMainMenuAsync()
+        async Task ISceneLoader.LoadMainMenuAsync()
         {
             _musicController.StopCurrentMusicAsync();
+            await LoadSceneAsync(MAIN_MENU);
             _musicController.PlayMainMenuMusic();
-            return LoadSceneAsync(MAIN_MENU);
         }
 
         private async Task LoadSceneAsync(string sceneName)

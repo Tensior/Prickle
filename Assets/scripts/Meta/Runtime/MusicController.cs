@@ -21,6 +21,8 @@ namespace Meta
             {
                 { SceneLoader.LEVEL1, _level1Music }
             };
+
+            PlayMainMenuMusic();
         }
         
         public void PlayMainMenuMusic()
